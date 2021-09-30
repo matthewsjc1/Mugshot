@@ -79,13 +79,32 @@ Public Class Form1
 
         Dim updateClient As New autoUpdateClient
 
-        updateClient.StartAutoUpdater()
+        Try
 
-        updateClient.WaitForClientMessage()
+            updateClient.StartAutoUpdater()
+
+        Catch ex As Exception
+
+            WriteErrorLog("unable to start auto-updater")
+
+        End Try
+
+        Try
+
+            updateClient.WaitForClientMessage()
+
+        Catch ex As Exception
+
+            WriteErrorLog("problem waiting for client message")
+
+        End Try
+
 
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        WriteAppOpenedRecordToUsageRecords()
 
         artFileOpenDialog.InitialDirectory = "\\ARTSERVER\Textile-Misc\Textile Files\In Progress & Ideas"
 
@@ -139,8 +158,10 @@ Public Class Form1
 
                         Catch ex As Exception
 
+                            WriteErrorLog("failed to start photoshop")
+
                             MessageBox.Show("Mugshot wasn't able to start Photoshop." + vbCrLf + "Make sure a copy of Photoshop 2021 is installed!" +
-            vbCrLf + "Error details:" + vbCrLf + ex.Message + vbCrLf + ex.StackTrace, "Problem Opening Photoshop")
+                                            vbCrLf + "Error details:" + vbCrLf + ex.Message + vbCrLf + ex.StackTrace, "Problem Opening Photoshop")
 
                         End Try
 
@@ -196,6 +217,8 @@ Public Class Form1
 
                                 progressForm.Reset()
                                 progressForm.Hide()
+
+                                WriteErrorLog("couldn't process .psd file - " + artFilePath)
 
                                 MessageBox.Show("For some reason Mugshot doesn't like this Photoshop file." + vbCrLf + vbCrLf +
                                                 "Email jmatthews@earthsunmoon.com for further assistance." + vbCrLf +
@@ -295,16 +318,26 @@ Public Class Form1
                             progressForm.SetCurrentTaskText("Saving TO PRINT file")
                             progressForm.Invalidate()
 
-                            'save '_TO_PRINT' tif
-                            proofArtLayer.SetVisibilityToOff()
-                            printArtLayer.SetVisibilityToOn()
-                            Dim tifFilePath As String = saveFolderPath + "\" + artFileNameNoEx + "_" + curColor.GetColorName() + "_MUG_TO_PRINT.tif"
-                            Dim tifOptions As New TiffSaveOptions
-                            tifOptions.AlphaChannels = True
-                            tifOptions.ByteOrder = PsByteOrderType.psIBMByteOrder
-                            tifOptions.ImageCompression = PsTiffEncodingType.psNoTIFFCompression
-                            tifOptions.EmbedColorProfile = True
-                            curMugTemplateDoc.SaveAs(tifFilePath, tifOptions)
+                            Try
+
+                                'save '_TO_PRINT' tif
+                                proofArtLayer.SetVisibilityToOff()
+                                printArtLayer.SetVisibilityToOn()
+                                Dim tifFilePath As String = saveFolderPath + "\" + artFileNameNoEx + "_" + curColor.GetColorName() + "_MUG_TO_PRINT.tif"
+                                Dim tifOptions As New TiffSaveOptions
+                                tifOptions.AlphaChannels = True
+                                tifOptions.ByteOrder = PsByteOrderType.psIBMByteOrder
+                                tifOptions.ImageCompression = PsTiffEncodingType.psNoTIFFCompression
+                                tifOptions.EmbedColorProfile = True
+                                curMugTemplateDoc.SaveAs(tifFilePath, tifOptions)
+
+                            Catch ex As Exception
+
+                                WriteErrorLog("unable to save '_TO_PRINT' tif")
+
+                                MessageBox.Show("Failed to save '_TO_PRINT' tif")
+
+                            End Try
 
                             'UPDATE PROGRESS FORM**************************
                             progressForm.IncrementProgressBar(1)
@@ -314,9 +347,19 @@ Public Class Form1
                             progressForm.SetCurrentTaskText("Saving MUG file")
                             progressForm.Invalidate()
 
-                            'save '_MUG' psd
-                            proofArtLayer.SetVisibilityToOn()
-                            printArtLayer.SetVisibilityToOn()
+                            Try
+
+                                'save '_MUG' psd
+                                proofArtLayer.SetVisibilityToOn()
+                                printArtLayer.SetVisibilityToOn()
+
+                            Catch ex As Exception
+
+                                WriteErrorLog("unable to save '_MUG' psd")
+
+                                MessageBox.Show("Failed to save '_MUG' psd")
+
+                            End Try
 
                             Dim psdFileName As String = saveFolderPath + "\" + artFileNameNoEx + "_" + curColor.GetColorName() + "_MUG.psd"
                             curMugTemplateDoc.SaveAs(psdFileName)
@@ -424,12 +467,25 @@ Public Class Form1
                             progressForm.SetCurrentTaskText("Saving ON MUG jpg")
                             progressForm.Invalidate()
 
-                            'save '_ON_MUG' mock up jpg
-                            Dim jpgFileName As String = saveFolderPath + "\" + artFileNameNoEx + "_" + curColor.GetColorName() + "_ON_MUG.jpg"
-                            Dim jpgOptions As New JPEGSaveOptions
-                            jpgOptions.Quality = 12
-                            jpgOptions.EmbedColorProfile = True
-                            curMockUpDoc.SaveAs(psdFileName, jpgOptions)
+                            Try
+
+                                'save '_ON_MUG' mock up jpg
+                                Dim jpgFileName As String = saveFolderPath + "\" + artFileNameNoEx + "_" + curColor.GetColorName() + "_ON_MUG.jpg"
+                                Dim jpgOptions As New JPEGSaveOptions
+                                jpgOptions.Quality = 12
+                                jpgOptions.EmbedColorProfile = True
+                                curMockUpDoc.SaveAs(psdFileName, jpgOptions)
+
+                                WriteSuccessfulRunRecordToUsageRecords()
+
+                            Catch ex As Exception
+
+                                WriteErrorLog("unable to save '_ON_MUG' jpg")
+
+                                MessageBox.Show("Failed to save '_ON_MUG' jpg")
+
+                            End Try
+
 
                             'UPDATE PROGRESS FORM**************************
                             progressForm.IncrementProgressBar(1)
@@ -502,6 +558,55 @@ Public Class Form1
         End If
 
         Me.Activate() 'bring Mugshot back to foreground
+
+    End Sub
+
+    Private Sub WriteAppOpenedRecordToUsageRecords()
+
+        Try
+
+            Dim curDateTime As String = DateTime.Now.ToString("yyyy-M-d @ H_m")
+            File.Create("\\ARTSERVER\Working_Files\Jared\CUSTOM SOFTWARE\MUGSHOT\USAGE_RECORDS\" + "App Opened - " + curDateTime + ".ur")
+
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
+
+    Private Sub WriteSuccessfulRunRecordToUsageRecords()
+
+        Try
+
+            Dim curDateTime As String = DateTime.Now.ToString("yyyy-M-d @ H_m")
+            Dim usageFile As New StreamWriter("\\ARTSERVER\Working_Files\Jared\CUSTOM SOFTWARE\MUGSHOT\USAGE_RECORDS\" + "Template Made - " + curDateTime + ".ur")
+
+            usageFile.WriteLine("ran in silent mode = " + hidePhotoshopCheckbox.Checked.ToString) 'was run in silent mode
+
+            usageFile.Close()
+
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
+
+    Private Sub WriteErrorLog(ByVal errorMessage As String)
+
+        Try
+
+            Dim curDateTime As String = DateTime.Now.ToString("yyyy-M-d @ H_m")
+            Dim usageFile As New StreamWriter("\\ARTSERVER\Working_Files\Jared\CUSTOM SOFTWARE\MUGSHOT\USAGE_RECORDS\" + "ERROR OCCURRED! - " + curDateTime + ".ur")
+
+            usageFile.WriteLine("mugshot error message = " + errorMessage)
+
+            usageFile.WriteLine("stack trace = " + Environment.StackTrace) 'stack trace
+
+            usageFile.Close()
+
+        Catch ex As Exception
+
+        End Try
 
     End Sub
 

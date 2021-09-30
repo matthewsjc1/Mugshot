@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class progressForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class progressForm
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.curProgressBar = New System.Windows.Forms.ProgressBar()
         Me.curTaskLbl = New System.Windows.Forms.Label()
@@ -28,7 +28,7 @@ Partial Class progressForm
         '
         'curProgressBar
         '
-        Me.curProgressBar.Location = New System.Drawing.Point(50, 66)
+        Me.curProgressBar.Location = New System.Drawing.Point(50, 62)
         Me.curProgressBar.Name = "curProgressBar"
         Me.curProgressBar.Size = New System.Drawing.Size(365, 23)
         Me.curProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous
@@ -37,7 +37,7 @@ Partial Class progressForm
         'curTaskLbl
         '
         Me.curTaskLbl.AutoSize = True
-        Me.curTaskLbl.Location = New System.Drawing.Point(50, 37)
+        Me.curTaskLbl.Location = New System.Drawing.Point(50, 33)
         Me.curTaskLbl.Name = "curTaskLbl"
         Me.curTaskLbl.Size = New System.Drawing.Size(0, 15)
         Me.curTaskLbl.TabIndex = 1
@@ -46,7 +46,7 @@ Partial Class progressForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(463, 123)
+        Me.ClientSize = New System.Drawing.Size(471, 114)
         Me.ControlBox = False
         Me.Controls.Add(Me.curTaskLbl)
         Me.Controls.Add(Me.curProgressBar)
