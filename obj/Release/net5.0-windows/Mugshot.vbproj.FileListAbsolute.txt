@@ -43,3 +43,4 @@ E:\matthewsjc1 github repos\Mugshot\obj\Release\net5.0-windows\Interop.Photoshop
 E:\matthewsjc1 github repos\Mugshot\obj\Release\net5.0-windows\Mugshot.vbproj.ResolveComReference.cache
 E:\matthewsjc1 github repos\Mugshot\obj\Release\net5.0-windows\Mugshot.Form1.resources
 C:\Users\jaredm\Desktop\Programming Projects\GIT REPOS\Mugshot\obj\Release\net5.0-windows\Mugshot.progressForm.resources
+E:\matthewsjc1 github repos\Mugshot\obj\Release\net5.0-windows\Mugshot.progressForm.resources

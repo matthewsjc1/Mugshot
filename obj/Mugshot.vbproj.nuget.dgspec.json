@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jaredm\\Desktop\\Programming Projects\\GIT REPOS\\Mugshot\\Mugshot.vbproj": {}
+    "E:\\matthewsjc1 github repos\\Mugshot\\Mugshot.vbproj": {}
   },
   "projects": {
-    "C:\\Users\\jaredm\\Desktop\\Programming Projects\\GIT REPOS\\Mugshot\\Mugshot.vbproj": {
+    "E:\\matthewsjc1 github repos\\Mugshot\\Mugshot.vbproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jaredm\\Desktop\\Programming Projects\\GIT REPOS\\Mugshot\\Mugshot.vbproj",
+        "projectUniqueName": "E:\\matthewsjc1 github repos\\Mugshot\\Mugshot.vbproj",
         "projectName": "Mugshot",
-        "projectPath": "C:\\Users\\jaredm\\Desktop\\Programming Projects\\GIT REPOS\\Mugshot\\Mugshot.vbproj",
-        "packagesPath": "C:\\Users\\jaredm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jaredm\\Desktop\\Programming Projects\\GIT REPOS\\Mugshot\\obj\\",
+        "projectPath": "E:\\matthewsjc1 github repos\\Mugshot\\Mugshot.vbproj",
+        "packagesPath": "C:\\Users\\matth\\.nuget\\packages\\",
+        "outputPath": "E:\\matthewsjc1 github repos\\Mugshot\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\jaredm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\matth\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
