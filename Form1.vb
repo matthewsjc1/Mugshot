@@ -588,50 +588,62 @@ Public Class Form1
 
     Private Sub WriteAppOpenedRecordToUsageRecords()
 
-        Try
+        If My.Computer.Name = "ART-AB" = False Then  'don't make records for my work pc (avoid contaminating actual usage records)
 
-            Dim curDateTime As String = DateTime.Now.ToString("yyyy-M-d @ H_m")
-            File.Create("\\ARTSERVER\Working_Files\Jared\CUSTOM SOFTWARE\MUGSHOT\USAGE_RECORDS\" + "App Opened - " + curDateTime + ".ur")
+            Try
 
-        Catch ex As Exception
+                Dim curDateTime As String = DateTime.Now.ToString("yyyy-M-d @ H_m")
+                File.Create("\\ARTSERVER\Working_Files\Jared\CUSTOM SOFTWARE\MUGSHOT\USAGE_RECORDS\" + "App Opened - " + curDateTime + ".ur")
 
-        End Try
+            Catch ex As Exception
+
+            End Try
+
+        End If
 
     End Sub
 
     Private Sub WriteSuccessfulRunRecordToUsageRecords()
 
-        Try
+        If My.Computer.Name = "ART-AB" = False Then 'don't make records for my work pc (avoid contaminating actual usage records)
 
-            Dim curDateTime As String = DateTime.Now.ToString("yyyy-M-d @ H_m")
-            Dim usageFile As New StreamWriter("\\ARTSERVER\Working_Files\Jared\CUSTOM SOFTWARE\MUGSHOT\USAGE_RECORDS\" + "Template Made - " + curDateTime + ".ur")
+            Try
 
-            usageFile.WriteLine("ran in silent mode = " + hidePhotoshopCheckbox.Checked.ToString) 'was run in silent mode
+                Dim curDateTime As String = DateTime.Now.ToString("yyyy-M-d @ H_m")
+                Dim usageFile As New StreamWriter("\\ARTSERVER\Working_Files\Jared\CUSTOM SOFTWARE\MUGSHOT\USAGE_RECORDS\" + "Template Made - " + curDateTime + ".ur")
 
-            usageFile.Close()
+                usageFile.WriteLine("ran in silent mode = " + hidePhotoshopCheckbox.Checked.ToString) 'was run in silent mode
 
-        Catch ex As Exception
+                usageFile.Close()
 
-        End Try
+            Catch ex As Exception
+
+            End Try
+
+        End If
 
     End Sub
 
     Private Sub WriteErrorLog(ByVal errorMessage As String)
 
-        Try
+        If My.Computer.Name = "ART-AB" = False Then 'don't make records for my work pc (avoid contaminating actual usage records)
 
-            Dim curDateTime As String = DateTime.Now.ToString("yyyy-M-d @ H_m")
-            Dim usageFile As New StreamWriter("\\ARTSERVER\Working_Files\Jared\CUSTOM SOFTWARE\MUGSHOT\USAGE_RECORDS\" + "ERROR OCCURRED! - " + curDateTime + ".ur")
+            Try
 
-            usageFile.WriteLine("mugshot error message = " + errorMessage)
+                Dim curDateTime As String = DateTime.Now.ToString("yyyy-M-d @ H_m")
+                Dim usageFile As New StreamWriter("\\ARTSERVER\Working_Files\Jared\CUSTOM SOFTWARE\MUGSHOT\USAGE_RECORDS\" + "ERROR OCCURRED! - " + curDateTime + ".ur")
 
-            usageFile.WriteLine("stack trace = " + Environment.StackTrace) 'stack trace
+                usageFile.WriteLine("mugshot error message = " + errorMessage)
 
-            usageFile.Close()
+                usageFile.WriteLine("stack trace = " + Environment.StackTrace) 'stack trace
 
-        Catch ex As Exception
+                usageFile.Close()
 
-        End Try
+            Catch ex As Exception
+
+            End Try
+
+        End If
 
     End Sub
 
