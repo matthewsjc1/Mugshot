@@ -1,3 +1,0 @@
-client_app_exe=Mugshot.exe
-version=1.2
-remote_auto_update_directory=\\ARTSERVER\Working_Files\Jared\CUSTOM SOFTWARE\MUGSHOT\AUTO_UPDATE_FILES
