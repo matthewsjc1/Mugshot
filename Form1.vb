@@ -7,6 +7,7 @@ Public Class Form1
     Private Const BACKGROUND_TEMPLATES_DIRECTORY As String = "background_templates"
     Private Const MOCK_UP_TEMPLATES_DIRECTORY As String = "mock_up_templates"
     Private Const PREVIEW_IMAGES_DIRECTORY As String = "preview_images"
+    Private Const COPYRIGHT_TEMPLATE_DIRECTORY As String = "copyright_template"
 
     'layer name constants
     Private Const LEFT_ARTWORK_LAYER_NAME As String = "Left Artwork"
@@ -15,6 +16,7 @@ Public Class Form1
     Private Const PROOF_LAYER_NAME As String = "Proof Color"
     Private Const PRINT_LAYER_NAME As String = "Print Color"
     Private Const OVERLAY_LAYER_NAME As String = "Shading Overlay"
+    Private Const COPYRIGHT_LAYER_NAME As String = "Copyright Info"
 
     'preview image constants
     Private Const PREVIEW_IMAGE_BLANK_MUG As String = "blank_mug.png"
@@ -38,6 +40,7 @@ Public Class Form1
     Private sourceArtLayer As New easyPhotoshopArtLayer
     Private wrapLeftSourceArtLayer As New easyPhotoshopArtLayer
     Private wrapRightSourceArtLayer As New easyPhotoshopArtLayer
+    Private copyrightSourceArtLayer As New easyPhotoshopArtLayer
     Private leftArtLayer As New easyPhotoshopArtLayer
     Private rightArtLayer As New easyPhotoshopArtLayer
     Private wrapArtLayer As New easyPhotoshopArtLayer
@@ -47,6 +50,7 @@ Public Class Form1
     Private mockupLeftArtLayer As New easyPhotoshopArtLayer
     Private mockupRightArtLayer As New easyPhotoshopArtLayer
     Private overlayArtLayer As New easyPhotoshopArtLayer
+    Private copyrightArtLayer As New easyPhotoshopArtLayer
 
     'PUBLIC ROUTINES=======================================================
 
@@ -317,6 +321,29 @@ Public Class Form1
                                 proofArtLayer.SetName(PROOF_LAYER_NAME)
                                 printArtLayer.SetName(PRINT_LAYER_NAME)
                                 wrapArtLayer.SetName(WRAP_ARTWORK_LAYER_NAME)
+
+                            End If
+
+                            'if copyright info is enabled, copy and paste copyright template on top
+                            If copyrightEnabledRadBtn.Checked = True Then
+
+                                Dim copyrightFilePath As String = AppContext.BaseDirectory + COPYRIGHT_TEMPLATE_DIRECTORY + "\copyright_template.psd"
+                                Dim copyrightDoc As Document = psApp.Open(copyrightFilePath)
+
+                                'copy and close
+                                psApp.ActiveDocument = copyrightDoc
+                                copyrightSourceArtLayer.SetArtLayer(copyrightDoc.ActiveLayer)
+                                copyrightSourceArtLayer.CopyToClipboard(True)
+
+                                copyrightDoc.Close(PsSaveOptions.psDoNotSaveChanges)
+
+                                'paste and reposition
+                                psApp.ActiveDocument = curMugTemplateDoc
+                                copyrightArtLayer.SetArtLayer(curMugTemplateDoc.Paste())
+                                copyrightArtLayer.MoveCenterToPosition(74, 921)
+
+                                'set copyright layer final name
+                                copyrightArtLayer.SetName(COPYRIGHT_LAYER_NAME)
 
                             End If
 

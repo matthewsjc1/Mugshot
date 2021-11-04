@@ -47,6 +47,9 @@ Partial Class Form1
         Me.twoImageRadBtn = New System.Windows.Forms.RadioButton()
         Me.curSelImagePicBox = New System.Windows.Forms.PictureBox()
         Me.hidePhotoshopCheckbox = New System.Windows.Forms.CheckBox()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.copyrightDisabledRadBtn = New System.Windows.Forms.RadioButton()
+        Me.copyrightEnabledRadBtn = New System.Windows.Forms.RadioButton()
         CType(Me.roughPicBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.smoothPicBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.colorsGroupBox.SuspendLayout()
@@ -56,11 +59,12 @@ Partial Class Form1
         Me.backOptionsGroupBox.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.curSelImagePicBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'selColorsBtn
         '
-        Me.selColorsBtn.Location = New System.Drawing.Point(127, 216)
+        Me.selColorsBtn.Location = New System.Drawing.Point(127, 251)
         Me.selColorsBtn.Name = "selColorsBtn"
         Me.selColorsBtn.Size = New System.Drawing.Size(97, 37)
         Me.selColorsBtn.TabIndex = 0
@@ -73,7 +77,7 @@ Partial Class Form1
         Me.selColorsListBox.ItemHeight = 15
         Me.selColorsListBox.Location = New System.Drawing.Point(21, 43)
         Me.selColorsListBox.Name = "selColorsListBox"
-        Me.selColorsListBox.Size = New System.Drawing.Size(203, 169)
+        Me.selColorsListBox.Size = New System.Drawing.Size(203, 199)
         Me.selColorsListBox.TabIndex = 1
         '
         'nextBtn
@@ -98,7 +102,7 @@ Partial Class Form1
         '
         Me.roughPicBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.roughPicBox.Image = CType(resources.GetObject("roughPicBox.Image"), System.Drawing.Image)
-        Me.roughPicBox.Location = New System.Drawing.Point(40, 43)
+        Me.roughPicBox.Location = New System.Drawing.Point(37, 27)
         Me.roughPicBox.Name = "roughPicBox"
         Me.roughPicBox.Size = New System.Drawing.Size(73, 101)
         Me.roughPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -109,7 +113,7 @@ Partial Class Form1
         '
         Me.smoothPicBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.smoothPicBox.Image = CType(resources.GetObject("smoothPicBox.Image"), System.Drawing.Image)
-        Me.smoothPicBox.Location = New System.Drawing.Point(168, 43)
+        Me.smoothPicBox.Location = New System.Drawing.Point(165, 27)
         Me.smoothPicBox.Name = "smoothPicBox"
         Me.smoothPicBox.Size = New System.Drawing.Size(73, 101)
         Me.smoothPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -123,7 +127,7 @@ Partial Class Form1
         Me.colorsGroupBox.Controls.Add(Me.Label1)
         Me.colorsGroupBox.Location = New System.Drawing.Point(364, 29)
         Me.colorsGroupBox.Name = "colorsGroupBox"
-        Me.colorsGroupBox.Size = New System.Drawing.Size(248, 270)
+        Me.colorsGroupBox.Size = New System.Drawing.Size(248, 304)
         Me.colorsGroupBox.TabIndex = 6
         Me.colorsGroupBox.TabStop = False
         Me.colorsGroupBox.Text = "Colors"
@@ -134,9 +138,9 @@ Partial Class Form1
         Me.GroupBox2.Controls.Add(Me.roughRadBtn)
         Me.GroupBox2.Controls.Add(Me.roughPicBox)
         Me.GroupBox2.Controls.Add(Me.smoothPicBox)
-        Me.GroupBox2.Location = New System.Drawing.Point(30, 113)
+        Me.GroupBox2.Location = New System.Drawing.Point(30, 102)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(277, 186)
+        Me.GroupBox2.Size = New System.Drawing.Size(277, 169)
         Me.GroupBox2.TabIndex = 7
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Edge Shape"
@@ -144,7 +148,7 @@ Partial Class Form1
         'SmoothRadBtn
         '
         Me.SmoothRadBtn.AutoSize = True
-        Me.SmoothRadBtn.Location = New System.Drawing.Point(148, 150)
+        Me.SmoothRadBtn.Location = New System.Drawing.Point(145, 134)
         Me.SmoothRadBtn.Name = "SmoothRadBtn"
         Me.SmoothRadBtn.Size = New System.Drawing.Size(113, 19)
         Me.SmoothRadBtn.TabIndex = 11
@@ -155,7 +159,7 @@ Partial Class Form1
         '
         Me.roughRadBtn.AutoSize = True
         Me.roughRadBtn.Checked = True
-        Me.roughRadBtn.Location = New System.Drawing.Point(19, 150)
+        Me.roughRadBtn.Location = New System.Drawing.Point(16, 134)
         Me.roughRadBtn.Name = "roughRadBtn"
         Me.roughRadBtn.Size = New System.Drawing.Size(113, 19)
         Me.roughRadBtn.TabIndex = 10
@@ -237,12 +241,13 @@ Partial Class Form1
         '
         'backOptionsGroupBox
         '
+        Me.backOptionsGroupBox.Controls.Add(Me.GroupBox3)
         Me.backOptionsGroupBox.Controls.Add(Me.GroupBox2)
         Me.backOptionsGroupBox.Controls.Add(Me.GroupBox1)
         Me.backOptionsGroupBox.Controls.Add(Me.colorsGroupBox)
         Me.backOptionsGroupBox.Location = New System.Drawing.Point(264, 23)
         Me.backOptionsGroupBox.Name = "backOptionsGroupBox"
-        Me.backOptionsGroupBox.Size = New System.Drawing.Size(645, 322)
+        Me.backOptionsGroupBox.Size = New System.Drawing.Size(645, 351)
         Me.backOptionsGroupBox.TabIndex = 13
         Me.backOptionsGroupBox.TabStop = False
         Me.backOptionsGroupBox.Text = "Mug Background Options"
@@ -274,7 +279,7 @@ Partial Class Form1
         Me.twoImageRadBtn.Checked = True
         Me.twoImageRadBtn.Location = New System.Drawing.Point(19, 29)
         Me.twoImageRadBtn.Name = "twoImageRadBtn"
-        Me.twoImageRadBtn.Size = New System.Drawing.Size(84, 19)
+        Me.twoImageRadBtn.Size = New System.Drawing.Size(82, 19)
         Me.twoImageRadBtn.TabIndex = 14
         Me.twoImageRadBtn.TabStop = True
         Me.twoImageRadBtn.Text = "Two Image"
@@ -299,6 +304,39 @@ Partial Class Form1
         Me.hidePhotoshopCheckbox.TabIndex = 16
         Me.hidePhotoshopCheckbox.Text = "Run Photoshop in Silent Mode"
         Me.hidePhotoshopCheckbox.UseVisualStyleBackColor = True
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.copyrightEnabledRadBtn)
+        Me.GroupBox3.Controls.Add(Me.copyrightDisabledRadBtn)
+        Me.GroupBox3.Location = New System.Drawing.Point(29, 277)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(277, 55)
+        Me.GroupBox3.TabIndex = 16
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Add Copyright Info"
+        '
+        'copyrightDisabledRadBtn
+        '
+        Me.copyrightDisabledRadBtn.AutoSize = True
+        Me.copyrightDisabledRadBtn.Checked = True
+        Me.copyrightDisabledRadBtn.Location = New System.Drawing.Point(33, 25)
+        Me.copyrightDisabledRadBtn.Name = "copyrightDisabledRadBtn"
+        Me.copyrightDisabledRadBtn.Size = New System.Drawing.Size(70, 19)
+        Me.copyrightDisabledRadBtn.TabIndex = 0
+        Me.copyrightDisabledRadBtn.TabStop = True
+        Me.copyrightDisabledRadBtn.Text = "Disabled"
+        Me.copyrightDisabledRadBtn.UseVisualStyleBackColor = True
+        '
+        'copyrightEnabledRadBtn
+        '
+        Me.copyrightEnabledRadBtn.AutoSize = True
+        Me.copyrightEnabledRadBtn.Location = New System.Drawing.Point(149, 24)
+        Me.copyrightEnabledRadBtn.Name = "copyrightEnabledRadBtn"
+        Me.copyrightEnabledRadBtn.Size = New System.Drawing.Size(67, 19)
+        Me.copyrightEnabledRadBtn.TabIndex = 1
+        Me.copyrightEnabledRadBtn.Text = "Enabled"
+        Me.copyrightEnabledRadBtn.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -333,6 +371,8 @@ Partial Class Form1
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.curSelImagePicBox, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -362,4 +402,7 @@ Partial Class Form1
     Friend WithEvents horWrapRadBtn As RadioButton
     Friend WithEvents twoImageRadBtn As RadioButton
     Friend WithEvents hidePhotoshopCheckbox As CheckBox
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents copyrightEnabledRadBtn As RadioButton
+    Friend WithEvents copyrightDisabledRadBtn As RadioButton
 End Class
