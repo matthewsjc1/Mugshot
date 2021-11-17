@@ -1,0 +1,37 @@
+// Define the x and y coordinates for the pixel to sample.
+var x = 1;
+var y = 1;
+
+// Add a Color Sampler at a given x and y coordinate in the image.
+var pointSample = app.activeDocument.colorSamplers.add([(x - 1),(y - 1)]);
+
+// Obtain array of RGB values.
+var rgb = [
+    pointSample.color.rgb.red,
+    pointSample.color.rgb.green,
+    pointSample.color.rgb.blue
+];
+
+// Obtain array of rounded CMYK values.
+var cmyk = [
+    Math.round(pointSample.color.cmyk.cyan),
+    Math.round(pointSample.color.cmyk.magenta), 
+    Math.round(pointSample.color.cmyk.yellow),
+    Math.round(pointSample.color.cmyk.black)
+];
+
+// Remove the Color Sampler.
+pointSample.remove();
+
+// Display the complete RGB values and each component color.
+alert('RGB: ' + rgb)
+alert('red: ' + rgb[0])
+alert('green: ' + rgb[1])
+alert('blue: ' + rgb[2])
+
+// Display the complete CMYK values and each component color.
+alert('CMYK: ' + cmyk)
+alert('cyan: ' + cmyk[0])
+alert('magenta: ' + cmyk[1])
+alert('yellow: ' + cmyk[2])
+alert('black: ' + cmyk[3])
