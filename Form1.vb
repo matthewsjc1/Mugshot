@@ -1,5 +1,4 @@
-﻿Imports Mugshot.mugColorsSampler_class
-Imports Photoshop
+﻿Imports Photoshop
 Imports System.IO
 
 Public Class Form1

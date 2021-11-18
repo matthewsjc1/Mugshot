@@ -226,7 +226,7 @@ Public Class mugColorsSampler_class
     Private Const ANTIQUE_ORANGE_PRINT_Y As Double = 1391.0
     Private Const ANTIQUE_ORANGE_PROOF_X As Double = 3554.0
     Private Const ANTIQUE_ORANGE_PROOF_Y As Double = 1379.0
-    Private Const ANTIQUE_CHERRY_PRINT_X As Double = 3358.0
+    Private Const ANTIQUE_CHERRY_PRINT_X As Double = 3554.0
     Private Const ANTIQUE_CHERRY_PRINT_Y As Double = 1647.0
     Private Const ANTIQUE_CHERRY_PROOF_X As Double = 3558.0
     Private Const ANTIQUE_CHERRY_PROOF_Y As Double = 1659.0
@@ -235,127 +235,7 @@ Public Class mugColorsSampler_class
     Private Const ORANGE_PROOF_X As Double = 3566.0
     Private Const ORANGE_PROOF_Y As Double = 1927.0
 
-
-    Public Enum MUG_COLOR As Integer
-
-        HEATHER_NAVY_PROOF = 0
-        HEATHER_NAVY_PRINT = 1
-        DARK_HEATHER_PROOF = 2
-        DARK_HEATHER_PRINT = 3
-        HEATHER_INDIGO_PROOF = 4
-        HEATHER_INDIGO_PRINT = 5
-        STONE_BLUE_PROOF = 6
-        STONE_BLUE_PRINT = 7
-        NAVY_BLUE_PROOF = 8
-        NAVY_BLUE_PRINT = 9
-        AQUATIC_BLUE_PROOF = 10
-        AQUATIC_BLUE_PRINT = 11
-        INDIGO_BLUE_PROOF = 12
-        INDIGO_BLUE_PRINT = 13
-        CAROLINA_BLUE_PROOF = 14
-        CAROLINA_BLUE_PRINT = 15
-        IRIS_PROOF = 16
-        IRIS_PRINT = 17
-        VIOLET_PROOF = 18
-        VIOLET_PRINT = 19
-        LT_BLUE_PROOF = 20
-        LT_BLUE_PRINT = 21
-        HEATHER_MILITARY_PROOF = 22
-        HEATHER_MILITARY_PRINT = 23
-        STONEWASHED_GREEN_PROOF = 24
-        STONEWASHED_GREEN_PRINT = 25
-        MILITARY_GREEN_PROOF = 26
-        MILITARY_GREEN_PRINT = 27
-        FOREST_GREEN_PROOF = 28
-        FOREST_GREEN_PRINT = 29
-        PISTACHIO_PROOF = 30
-        PISTACHIO_PRINT = 31
-        ROYAL_BLUE_PROOF = 32
-        ROYAL_BLUE_PRINT = 33
-        PURPLE_PROOF = 34
-        PURPLE_PRINT = 35
-        JADE_DOME_PROOF = 36
-        JADE_DOME_PRINT = 37
-        COBALT_PROOF = 38
-        COBALT_PRINT = 39
-        SAPPHIRE_PROOF = 40
-        SAPPHIRE_PRINT = 41
-        BLUE_DUSK_PROOF = 42
-        BLUE_DUSK_PRINT = 43
-        CARDINAL_RED_PROOF = 44
-        CARDINAL_RED_PRINT = 45
-        RED_PROOF = 46
-        RED_PRINT = 47
-        HEATHER_RED_PROOF = 48
-        HEATHER_RED_PRINT = 49
-        HEATHER_CARDINAL_PROOF = 50
-        HEATHER_CARDINAL_PRINT = 51
-        HELICONIA_PROOF = 52
-        HELICONIA_PRINT = 53
-        LT_PINK_PROOF = 54
-        LT_PINK_PRINT = 55
-        LAVENDER_PROOF = 56
-        LAVENDER_PRINT = 57
-        ORCHID_PROOF = 58
-        ORCHID_PRINT = 59
-        GARNET_PROOF = 60
-        GARNET_PRINT = 61
-        MAROON_PROOF = 62
-        MAROON_PRINT = 63
-        METRO_BLUE_PROOF = 64
-        METRO_BLUE_PRINT = 65
-        SANDY_PROOF = 66
-        SANDY_PRINT = 67
-        PRAIRIE_DUST_PROOF = 68
-        PRAIRIE_DUST_PRINT = 69
-        NATURAL_PROOF = 70
-        NATURAL_PRINT = 71
-        DARK_CHOCOLATE_PROOF = 72
-        DARK_CHOCOLATE_PRINT = 73
-        SAND_PROOF = 74
-        SAND_PRINT = 75
-        BROWN_SAVANA_PROOF = 76
-        BROWN_SAVANA_PRINT = 77
-        CHESTNUT_PROOF = 78
-        CHESTNUT_PRINT = 79
-        HEATHER_DARK_CHOCOLATE_PROOF = 80
-        HEATHER_DARK_CHOCOLATE_PRINT = 81
-        IRISH_GREEN_PROOF = 82
-        IRISH_GREEN_PRINT = 83
-        HEATHER_FOREST_PROOF = 84
-        HEATHER_FOREST_PRINT = 85
-        ANTIQUE_JADE_DOME_PROOF = 86
-        ANTIQUE_JADE_DOME_PRINT = 87
-        CHARCOAL_PROOF = 88
-        CHARCOAL_PRINT = 89
-        SPORTS_GREY_PROOF = 90
-        SPORTS_GREY_PRINT = 91
-        KIWI_PROOF = 92
-        KIWI_PRINT = 93
-        ANTIQUE_SAPPHIRE_PROOF = 94
-        ANTIQUE_SAPPHIRE_PRINT = 95
-        GRAPHITE_HEATHER_PROOF = 96
-        GRAPHITE_HEATHER_PRINT = 97
-        BLACKBERRY_PROOF = 98
-        BLACKBERRY_PRINT = 99
-        MIDNIGHT_PROOF = 100
-        MIDNIGHT_PRINT = 101
-        HONEY_PROOF = 102
-        HONEY_PRINT = 103
-        DAFFODIL_PROOF = 104
-        DAFFODIL_PRINT = 105
-        DAISY_PROOF = 106
-        DAISY_PRINT = 107
-        TEXAS_ORANGE_PROOF = 108
-        TEXAS_ORANGE_PRINT = 109
-        ANTIQUE_ORANGE_PRINT = 110
-        ANTIQUE_ORANGE_PROOF = 111
-        ANTIQUE_CHERRY_PRINT = 112
-        ANTIQUE_CHERRY_PROOF = 113
-        ORANGE_PRINT = 114
-        ORANGE_PROOF = 115
-
-    End Enum
+    'PUBLIC METHODS****************************************************************************************************
 
     Public Function GetRGBColorFromShirtColors_NEWFile(ByRef app As Application, ByVal MugColor As MUG_COLOR) As RGBColor
 
@@ -366,8 +246,8 @@ Public Class mugColorsSampler_class
         app.ActiveDocument.ColorSamplers.RemoveAll()
 
         Dim position(1) As Object 'the array passed to colorsampler.add MUST be type 'Object' to avoid throwing an error!
-        position(0) = 191.0
-        position(1) = 240.0
+        position(0) = GetColorSwatchXPosition(MugColor)
+        position(1) = GetColorSwatchYPosition(MugColor)
         Dim pointSample As ColorSampler = app.ActiveDocument.ColorSamplers.Add(position)
 
         Dim finalRGB As New RGBColor
@@ -384,4 +264,1079 @@ Public Class mugColorsSampler_class
 
     End Function
 
+    'PRIVATE METHODS***************************************************************************************************
+
+    Private Function GetColorSwatchXPosition(ByVal MugColor As MUG_COLOR) As Integer
+
+        Dim xPos As Integer = -1
+
+        Select Case MugColor
+
+            Case MUG_COLOR.HEATHER_NAVY_PROOF
+
+                xPos = HEATHER_NAVY_PROOF_X
+
+            Case MUG_COLOR.HEATHER_NAVY_PRINT
+
+                xPos = HEATHER_NAVY_PRINT_X
+
+            Case MUG_COLOR.DARK_HEATHER_PROOF
+
+                xPos = DARK_HEATHER_PROOF_X
+
+            Case MUG_COLOR.DARK_HEATHER_PRINT
+
+                xPos = DARK_HEATHER_PRINT_X
+
+            Case MUG_COLOR.HEATHER_INDIGO_PROOF
+
+                xPos = HEATHER_INDIGO_PROOF_X
+
+            Case MUG_COLOR.HEATHER_INDIGO_PRINT
+
+                xPos = HEATHER_INDIGO_PRINT_X
+
+            Case MUG_COLOR.STONE_BLUE_PROOF
+
+                xPos = STONE_BLUE_PROOF_X
+
+            Case MUG_COLOR.STONE_BLUE_PRINT
+
+                xPos = STONE_BLUE_PRINT_X
+
+            Case MUG_COLOR.NAVY_BLUE_PROOF
+
+                xPos = NAVY_BLUE_PROOF_X
+
+            Case MUG_COLOR.NAVY_BLUE_PRINT
+
+                xPos = NAVY_BLUE_PRINT_X
+
+            Case MUG_COLOR.AQUATIC_BLUE_PROOF
+
+                xPos = AQUATIC_BLUE_PROOF_X
+
+            Case MUG_COLOR.AQUATIC_BLUE_PRINT
+
+                xPos = AQUATIC_BLUE_PRINT_X
+
+            Case MUG_COLOR.INDIGO_BLUE_PROOF
+
+                xPos = INDIGO_BLUE_PROOF_X
+
+            Case MUG_COLOR.INDIGO_BLUE_PRINT
+
+                xPos = INDIGO_BLUE_PRINT_X
+
+            Case MUG_COLOR.CAROLINA_BLUE_PROOF
+
+                xPos = CAROLINA_BLUE_PROOF_X
+
+            Case MUG_COLOR.CAROLINA_BLUE_PRINT
+
+                xPos = CAROLINA_BLUE_PRINT_X
+
+            Case MUG_COLOR.IRIS_PROOF
+
+                xPos = IRIS_PROOF_X
+
+            Case MUG_COLOR.IRIS_PRINT
+
+                xPos = IRIS_PRINT_X
+
+            Case MUG_COLOR.VIOLET_PROOF
+
+                xPos = VIOLET_PROOF_X
+
+            Case MUG_COLOR.VIOLET_PRINT
+
+                xPos = VIOLET_PRINT_X
+
+            Case MUG_COLOR.LT_BLUE_PROOF
+
+                xPos = LT_BLUE_PROOF_X
+
+            Case MUG_COLOR.LT_BLUE_PRINT
+
+                xPos = LT_BLUE_PRINT_X
+
+            Case MUG_COLOR.HEATHER_MILITARY_PROOF
+
+                xPos = HEATHER_MILITARY_PROOF_X
+
+            Case MUG_COLOR.HEATHER_MILITARY_PRINT
+
+                xPos = HEATHER_MILITARY_PRINT_X
+
+            Case MUG_COLOR.STONEWASHED_GREEN_PROOF
+
+                xPos = STONEWASHED_GREEN_PROOF_X
+
+            Case MUG_COLOR.STONEWASHED_GREEN_PRINT
+
+                xPos = STONEWASHED_GREEN_PRINT_X
+
+            Case MUG_COLOR.MILITARY_GREEN_PROOF
+
+                xPos = MILITARY_GREEN_PROOF_X
+
+            Case MUG_COLOR.MILITARY_GREEN_PRINT
+
+                xPos = MILITARY_GREEN_PRINT_X
+
+            Case MUG_COLOR.FOREST_GREEN_PROOF
+
+                xPos = FOREST_GREEN_PROOF_X
+
+            Case MUG_COLOR.FOREST_GREEN_PRINT
+
+                xPos = FOREST_GREEN_PRINT_X
+
+            Case MUG_COLOR.PISTACHIO_PROOF
+
+                xPos = PISTACHIO_PROOF_X
+
+            Case MUG_COLOR.PISTACHIO_PRINT
+
+                xPos = PISTACHIO_PRINT_X
+
+            Case MUG_COLOR.ROYAL_BLUE_PROOF
+
+                xPos = ROYAL_BLUE_PROOF_X
+
+            Case MUG_COLOR.ROYAL_BLUE_PRINT
+
+                xPos = ROYAL_BLUE_PRINT_X
+
+            Case MUG_COLOR.PURPLE_PROOF
+
+                xPos = PURPLE_PROOF_X
+
+            Case MUG_COLOR.PURPLE_PRINT
+
+                xPos = PURPLE_PRINT_X
+
+            Case MUG_COLOR.JADE_DOME_PROOF
+
+                xPos = JADE_DOME_PROOF_X
+
+            Case MUG_COLOR.JADE_DOME_PRINT
+
+                xPos = JADE_DOME_PRINT_X
+
+            Case MUG_COLOR.COBALT_PROOF
+
+                xPos = COBALT_PROOF_X
+
+            Case MUG_COLOR.COBALT_PRINT
+
+                xPos = COBALT_PRINT_X
+
+            Case MUG_COLOR.SAPPHIRE_PROOF
+
+                xPos = SAPPHIRE_PROOF_X
+
+            Case MUG_COLOR.SAPPHIRE_PRINT
+
+                xPos = SAPPHIRE_PRINT_X
+
+            Case MUG_COLOR.BLUE_DUSK_PROOF
+
+                xPos = BLUE_DUSK_PROOF_X
+
+            Case MUG_COLOR.BLUE_DUSK_PRINT
+
+                xPos = BLUE_DUSK_PRINT_X
+
+            Case MUG_COLOR.CARDINAL_RED_PROOF
+
+                xPos = CARDINAL_RED_PROOF_X
+
+            Case MUG_COLOR.CARDINAL_RED_PRINT
+
+                xPos = CARDINAL_RED_PRINT_X
+
+            Case MUG_COLOR.RED_PROOF
+
+                xPos = RED_PROOF_X
+
+            Case MUG_COLOR.RED_PRINT
+
+                xPos = RED_PRINT_X
+
+            Case MUG_COLOR.HEATHER_RED_PROOF
+
+                xPos = HEATHER_RED_PROOF_X
+
+            Case MUG_COLOR.HEATHER_RED_PRINT
+
+                xPos = HEATHER_RED_PRINT_X
+
+            Case MUG_COLOR.HEATHER_CARDINAL_PROOF
+
+                xPos = HEATHER_CARDINAL_PROOF_X
+
+            Case MUG_COLOR.HEATHER_CARDINAL_PRINT
+
+                xPos = HEATHER_CARDINAL_PRINT_X
+
+            Case MUG_COLOR.HELICONIA_PROOF
+
+                xPos = HELICONIA_PROOF_X
+
+            Case MUG_COLOR.HELICONIA_PRINT
+
+                xPos = HELICONIA_PRINT_X
+
+            Case MUG_COLOR.LT_PINK_PROOF
+
+                xPos = LT_PINK_PROOF_X
+
+            Case MUG_COLOR.LT_PINK_PRINT
+
+                xPos = LT_PINK_PRINT_X
+
+            Case MUG_COLOR.LAVENDER_PROOF
+
+                xPos = LAVENDER_PROOF_X
+
+            Case MUG_COLOR.LAVENDER_PRINT
+
+                xPos = LAVENDER_PRINT_X
+
+            Case MUG_COLOR.ORCHID_PROOF
+
+                xPos = ORCHID_PROOF_X
+
+            Case MUG_COLOR.ORCHID_PRINT
+
+                xPos = ORCHID_PRINT_X
+
+            Case MUG_COLOR.GARNET_PROOF
+
+                xPos = GARNET_PROOF_X
+
+            Case MUG_COLOR.GARNET_PRINT
+
+                xPos = GARNET_PRINT_X
+
+            Case MUG_COLOR.MAROON_PROOF
+
+                xPos = MAROON_PROOF_X
+
+            Case MUG_COLOR.MAROON_PRINT
+
+                xPos = MAROON_PRINT_X
+
+            Case MUG_COLOR.METRO_BLUE_PROOF
+
+                xPos = METRO_BLUE_PROOF_X
+
+            Case MUG_COLOR.METRO_BLUE_PRINT
+
+                xPos = METRO_BLUE_PRINT_X
+
+            Case MUG_COLOR.SANDY_PROOF
+
+                xPos = SANDY_PROOF_X
+
+            Case MUG_COLOR.SANDY_PRINT
+
+                xPos = SANDY_PRINT_X
+
+            Case MUG_COLOR.PRAIRIE_DUST_PROOF
+
+                xPos = PRAIRIE_DUST_PROOF_X
+
+            Case MUG_COLOR.PRAIRIE_DUST_PRINT
+
+                xPos = PRAIRIE_DUST_PRINT_X
+
+            Case MUG_COLOR.NATURAL_PROOF
+
+                xPos = NATURAL_PROOF_X
+
+            Case MUG_COLOR.NATURAL_PRINT
+
+                xPos = NATURAL_PRINT_X
+
+            Case MUG_COLOR.DARK_CHOCOLATE_PROOF
+
+                xPos = DARK_CHOCOLATE_PROOF_X
+
+            Case MUG_COLOR.DARK_CHOCOLATE_PRINT
+
+                xPos = DARK_CHOCOLATE_PRINT_X
+
+            Case MUG_COLOR.SAND_PROOF
+
+                xPos = SAND_PROOF_X
+
+            Case MUG_COLOR.SAND_PRINT
+
+                xPos = SAND_PRINT_X
+
+            Case MUG_COLOR.BROWN_SAVANA_PROOF
+
+                xPos = BROWN_SAVANA_PROOF_X
+
+            Case MUG_COLOR.BROWN_SAVANA_PRINT
+
+                xPos = BROWN_SAVANA_PRINT_X
+
+            Case MUG_COLOR.CHESTNUT_PROOF
+
+                xPos = CHESTNUT_PROOF_X
+
+            Case MUG_COLOR.CHESTNUT_PRINT
+
+                xPos = CHESTNUT_PRINT_X
+
+            Case MUG_COLOR.HEATHER_DARK_CHOCOLATE_PROOF
+
+                xPos = HEATHER_DARK_CHOCOLATE_PROOF_X
+
+            Case MUG_COLOR.HEATHER_DARK_CHOCOLATE_PRINT
+
+                xPos = HEATHER_DARK_CHOCOLATE_PRINT_X
+
+            Case MUG_COLOR.IRISH_GREEN_PROOF
+
+                xPos = IRISH_GREEN_PROOF_X
+
+            Case MUG_COLOR.IRISH_GREEN_PRINT
+
+                xPos = IRISH_GREEN_PRINT_X
+
+            Case MUG_COLOR.HEATHER_FOREST_PROOF
+
+                xPos = HEATHER_FOREST_PROOF_X
+
+            Case MUG_COLOR.HEATHER_FOREST_PRINT
+
+                xPos = HEATHER_FOREST_PRINT_X
+
+            Case MUG_COLOR.ANTIQUE_JADE_DOME_PROOF
+
+                xPos = ANTIQUE_JADE_DOME_PROOF_X
+
+            Case MUG_COLOR.ANTIQUE_JADE_DOME_PRINT
+
+                xPos = ANTIQUE_JADE_DOME_PRINT_X
+
+            Case MUG_COLOR.CHARCOAL_PROOF
+
+                xPos = CHARCOAL_PROOF_X
+
+            Case MUG_COLOR.CHARCOAL_PRINT
+
+                xPos = CHARCOAL_PRINT_X
+
+            Case MUG_COLOR.SPORTS_GREY_PROOF
+
+                xPos = SPORTS_GREY_PROOF_X
+
+            Case MUG_COLOR.SPORTS_GREY_PRINT
+
+                xPos = SPORTS_GREY_PRINT_X
+
+            Case MUG_COLOR.KIWI_PROOF
+
+                xPos = KIWI_PROOF_X
+
+            Case MUG_COLOR.KIWI_PRINT
+
+                xPos = KIWI_PRINT_X
+
+            Case MUG_COLOR.ANTIQUE_SAPPHIRE_PROOF
+
+                xPos = ANTIQUE_SAPPHIRE_PROOF_X
+
+            Case MUG_COLOR.ANTIQUE_SAPPHIRE_PRINT
+
+                xPos = ANTIQUE_SAPPHIRE_PRINT_X
+
+            Case MUG_COLOR.GRAPHITE_HEATHER_PROOF
+
+                xPos = GRAPHITE_HEATHER_PROOF_X
+
+            Case MUG_COLOR.GRAPHITE_HEATHER_PRINT
+
+                xPos = GRAPHITE_HEATHER_PRINT_X
+
+            Case MUG_COLOR.BLACKBERRY_PROOF
+
+                xPos = BLACKBERRY_PROOF_X
+
+            Case MUG_COLOR.BLACKBERRY_PRINT
+
+                xPos = BLACKBERRY_PRINT_X
+
+            Case MUG_COLOR.MIDNIGHT_PROOF
+
+                xPos = MIDNIGHT_PROOF_X
+
+            Case MUG_COLOR.MIDNIGHT_PRINT
+
+                xPos = MIDNIGHT_PRINT_X
+
+            Case MUG_COLOR.HONEY_PROOF
+
+                xPos = HONEY_PROOF_X
+
+            Case MUG_COLOR.HONEY_PRINT
+
+                xPos = HONEY_PRINT_X
+
+            Case MUG_COLOR.DAFFODIL_PROOF
+
+                xPos = DAFFODIL_PROOF_X
+
+            Case MUG_COLOR.DAFFODIL_PRINT
+
+                xPos = DAFFODIL_PRINT_X
+
+            Case MUG_COLOR.DAISY_PROOF
+
+                xPos = DAISY_PROOF_X
+
+            Case MUG_COLOR.DAISY_PRINT
+
+                xPos = DAISY_PRINT_X
+
+            Case MUG_COLOR.TEXAS_ORANGE_PROOF
+
+                xPos = TEXAS_ORANGE_PROOF_X
+
+            Case MUG_COLOR.TEXAS_ORANGE_PRINT
+
+                xPos = TEXAS_ORANGE_PRINT_X
+
+            Case MUG_COLOR.ANTIQUE_ORANGE_PRINT
+
+                xPos = ANTIQUE_ORANGE_PRINT_X
+
+            Case MUG_COLOR.ANTIQUE_ORANGE_PROOF
+
+                xPos = ANTIQUE_ORANGE_PROOF_X
+
+            Case MUG_COLOR.ANTIQUE_CHERRY_PRINT
+
+                xPos = ANTIQUE_CHERRY_PRINT_X
+
+            Case MUG_COLOR.ANTIQUE_CHERRY_PROOF
+
+                xPos = ANTIQUE_CHERRY_PROOF_X
+
+            Case MUG_COLOR.ORANGE_PRINT
+
+                xPos = ORANGE_PRINT_X
+
+            Case MUG_COLOR.ORANGE_PROOF
+
+                xPos = ORANGE_PROOF_X
+
+        End Select
+
+        Return xPos
+
+    End Function
+
+    Private Function GetColorSwatchYPosition(ByVal MugColor As MUG_COLOR) As Integer
+
+        Dim yPos As Integer = -1
+
+        Select Case MugColor
+
+            Case MUG_COLOR.HEATHER_NAVY_PROOF
+
+                yPos = HEATHER_NAVY_PROOF_Y
+
+            Case MUG_COLOR.HEATHER_NAVY_PRINT
+
+                yPos = HEATHER_NAVY_PRINT_Y
+
+            Case MUG_COLOR.DARK_HEATHER_PROOF
+
+                yPos = DARK_HEATHER_PROOF_Y
+
+            Case MUG_COLOR.DARK_HEATHER_PRINT
+
+                yPos = DARK_HEATHER_PRINT_Y
+
+            Case MUG_COLOR.HEATHER_INDIGO_PROOF
+
+                yPos = HEATHER_INDIGO_PROOF_Y
+
+            Case MUG_COLOR.HEATHER_INDIGO_PRINT
+
+                yPos = HEATHER_INDIGO_PRINT_Y
+
+            Case MUG_COLOR.STONE_BLUE_PROOF
+
+                yPos = STONE_BLUE_PROOF_Y
+
+            Case MUG_COLOR.STONE_BLUE_PRINT
+
+                yPos = STONE_BLUE_PRINT_Y
+
+            Case MUG_COLOR.NAVY_BLUE_PROOF
+
+                yPos = NAVY_BLUE_PROOF_Y
+
+            Case MUG_COLOR.NAVY_BLUE_PRINT
+
+                yPos = NAVY_BLUE_PRINT_Y
+
+            Case MUG_COLOR.AQUATIC_BLUE_PROOF
+
+                yPos = AQUATIC_BLUE_PROOF_Y
+
+            Case MUG_COLOR.AQUATIC_BLUE_PRINT
+
+                yPos = AQUATIC_BLUE_PRINT_Y
+
+            Case MUG_COLOR.INDIGO_BLUE_PROOF
+
+                yPos = INDIGO_BLUE_PROOF_Y
+
+            Case MUG_COLOR.INDIGO_BLUE_PRINT
+
+                yPos = INDIGO_BLUE_PRINT_Y
+
+            Case MUG_COLOR.CAROLINA_BLUE_PROOF
+
+                yPos = CAROLINA_BLUE_PROOF_Y
+
+            Case MUG_COLOR.CAROLINA_BLUE_PRINT
+
+                yPos = CAROLINA_BLUE_PRINT_Y
+
+            Case MUG_COLOR.IRIS_PROOF
+
+                yPos = IRIS_PROOF_Y
+
+            Case MUG_COLOR.IRIS_PRINT
+
+                yPos = IRIS_PRINT_Y
+
+            Case MUG_COLOR.VIOLET_PROOF
+
+                yPos = VIOLET_PROOF_Y
+
+            Case MUG_COLOR.VIOLET_PRINT
+
+                yPos = VIOLET_PRINT_Y
+
+            Case MUG_COLOR.LT_BLUE_PROOF
+
+                yPos = LT_BLUE_PROOF_Y
+
+            Case MUG_COLOR.LT_BLUE_PRINT
+
+                yPos = LT_BLUE_PRINT_Y
+
+            Case MUG_COLOR.HEATHER_MILITARY_PROOF
+
+                yPos = HEATHER_MILITARY_PROOF_Y
+
+            Case MUG_COLOR.HEATHER_MILITARY_PRINT
+
+                yPos = HEATHER_MILITARY_PRINT_Y
+
+            Case MUG_COLOR.STONEWASHED_GREEN_PROOF
+
+                yPos = STONEWASHED_GREEN_PROOF_Y
+
+            Case MUG_COLOR.STONEWASHED_GREEN_PRINT
+
+                yPos = STONEWASHED_GREEN_PRINT_Y
+
+            Case MUG_COLOR.MILITARY_GREEN_PROOF
+
+                yPos = MILITARY_GREEN_PROOF_Y
+
+            Case MUG_COLOR.MILITARY_GREEN_PRINT
+
+                yPos = MILITARY_GREEN_PRINT_Y
+
+            Case MUG_COLOR.FOREST_GREEN_PROOF
+
+                yPos = FOREST_GREEN_PROOF_Y
+
+            Case MUG_COLOR.FOREST_GREEN_PRINT
+
+                yPos = FOREST_GREEN_PRINT_Y
+
+            Case MUG_COLOR.PISTACHIO_PROOF
+
+                yPos = PISTACHIO_PROOF_Y
+
+            Case MUG_COLOR.PISTACHIO_PRINT
+
+                yPos = PISTACHIO_PRINT_Y
+
+            Case MUG_COLOR.ROYAL_BLUE_PROOF
+
+                yPos = ROYAL_BLUE_PROOF_Y
+
+            Case MUG_COLOR.ROYAL_BLUE_PRINT
+
+                yPos = ROYAL_BLUE_PRINT_Y
+
+            Case MUG_COLOR.PURPLE_PROOF
+
+                yPos = PURPLE_PROOF_Y
+
+            Case MUG_COLOR.PURPLE_PRINT
+
+                yPos = PURPLE_PRINT_Y
+
+            Case MUG_COLOR.JADE_DOME_PROOF
+
+                yPos = JADE_DOME_PROOF_Y
+
+            Case MUG_COLOR.JADE_DOME_PRINT
+
+                yPos = JADE_DOME_PRINT_Y
+
+            Case MUG_COLOR.COBALT_PROOF
+
+                yPos = COBALT_PROOF_Y
+
+            Case MUG_COLOR.COBALT_PRINT
+
+                yPos = COBALT_PRINT_Y
+
+            Case MUG_COLOR.SAPPHIRE_PROOF
+
+                yPos = SAPPHIRE_PROOF_Y
+
+            Case MUG_COLOR.SAPPHIRE_PRINT
+
+                yPos = SAPPHIRE_PRINT_Y
+
+            Case MUG_COLOR.BLUE_DUSK_PROOF
+
+                yPos = BLUE_DUSK_PROOF_Y
+
+            Case MUG_COLOR.BLUE_DUSK_PRINT
+
+                yPos = BLUE_DUSK_PRINT_Y
+
+            Case MUG_COLOR.CARDINAL_RED_PROOF
+
+                yPos = CARDINAL_RED_PROOF_Y
+
+            Case MUG_COLOR.CARDINAL_RED_PRINT
+
+                yPos = CARDINAL_RED_PRINT_Y
+
+            Case MUG_COLOR.RED_PROOF
+
+                yPos = RED_PROOF_Y
+
+            Case MUG_COLOR.RED_PRINT
+
+                yPos = RED_PRINT_Y
+
+            Case MUG_COLOR.HEATHER_RED_PROOF
+
+                yPos = HEATHER_RED_PROOF_Y
+
+            Case MUG_COLOR.HEATHER_RED_PRINT
+
+                yPos = HEATHER_RED_PRINT_Y
+
+            Case MUG_COLOR.HEATHER_CARDINAL_PROOF
+
+                yPos = HEATHER_CARDINAL_PROOF_Y
+
+            Case MUG_COLOR.HEATHER_CARDINAL_PRINT
+
+                yPos = HEATHER_CARDINAL_PRINT_Y
+
+            Case MUG_COLOR.HELICONIA_PROOF
+
+                yPos = HELICONIA_PROOF_Y
+
+            Case MUG_COLOR.HELICONIA_PRINT
+
+                yPos = HELICONIA_PRINT_Y
+
+            Case MUG_COLOR.LT_PINK_PROOF
+
+                yPos = LT_PINK_PROOF_Y
+
+            Case MUG_COLOR.LT_PINK_PRINT
+
+                yPos = LT_PINK_PRINT_Y
+
+            Case MUG_COLOR.LAVENDER_PROOF
+
+                yPos = LAVENDER_PROOF_Y
+
+            Case MUG_COLOR.LAVENDER_PRINT
+
+                yPos = LAVENDER_PRINT_Y
+
+            Case MUG_COLOR.ORCHID_PROOF
+
+                yPos = ORCHID_PROOF_Y
+
+            Case MUG_COLOR.ORCHID_PRINT
+
+                yPos = ORCHID_PRINT_Y
+
+            Case MUG_COLOR.GARNET_PROOF
+
+                yPos = GARNET_PROOF_Y
+
+            Case MUG_COLOR.GARNET_PRINT
+
+                yPos = GARNET_PRINT_Y
+
+            Case MUG_COLOR.MAROON_PROOF
+
+                yPos = MAROON_PROOF_Y
+
+            Case MUG_COLOR.MAROON_PRINT
+
+                yPos = MAROON_PRINT_Y
+
+            Case MUG_COLOR.METRO_BLUE_PROOF
+
+                yPos = METRO_BLUE_PROOF_Y
+
+            Case MUG_COLOR.METRO_BLUE_PRINT
+
+                yPos = METRO_BLUE_PRINT_Y
+
+            Case MUG_COLOR.SANDY_PROOF
+
+                yPos = SANDY_PROOF_Y
+
+            Case MUG_COLOR.SANDY_PRINT
+
+                yPos = SANDY_PRINT_Y
+
+            Case MUG_COLOR.PRAIRIE_DUST_PROOF
+
+                yPos = PRAIRIE_DUST_PROOF_Y
+
+            Case MUG_COLOR.PRAIRIE_DUST_PRINT
+
+                yPos = PRAIRIE_DUST_PRINT_Y
+
+            Case MUG_COLOR.NATURAL_PROOF
+
+                yPos = NATURAL_PROOF_Y
+
+            Case MUG_COLOR.NATURAL_PRINT
+
+                yPos = NATURAL_PRINT_Y
+
+            Case MUG_COLOR.DARK_CHOCOLATE_PROOF
+
+                yPos = DARK_CHOCOLATE_PROOF_Y
+
+            Case MUG_COLOR.DARK_CHOCOLATE_PRINT
+
+                yPos = DARK_CHOCOLATE_PRINT_Y
+
+            Case MUG_COLOR.SAND_PROOF
+
+                yPos = SAND_PROOF_Y
+
+            Case MUG_COLOR.SAND_PRINT
+
+                yPos = SAND_PRINT_Y
+
+            Case MUG_COLOR.BROWN_SAVANA_PROOF
+
+                yPos = BROWN_SAVANA_PROOF_Y
+
+            Case MUG_COLOR.BROWN_SAVANA_PRINT
+
+                yPos = BROWN_SAVANA_PRINT_Y
+
+            Case MUG_COLOR.CHESTNUT_PROOF
+
+                yPos = CHESTNUT_PROOF_Y
+
+            Case MUG_COLOR.CHESTNUT_PRINT
+
+                yPos = CHESTNUT_PRINT_Y
+
+            Case MUG_COLOR.HEATHER_DARK_CHOCOLATE_PROOF
+
+                yPos = HEATHER_DARK_CHOCOLATE_PROOF_Y
+
+            Case MUG_COLOR.HEATHER_DARK_CHOCOLATE_PRINT
+
+                yPos = HEATHER_DARK_CHOCOLATE_PRINT_Y
+
+            Case MUG_COLOR.IRISH_GREEN_PROOF
+
+                yPos = IRISH_GREEN_PROOF_Y
+
+            Case MUG_COLOR.IRISH_GREEN_PRINT
+
+                yPos = IRISH_GREEN_PRINT_Y
+
+            Case MUG_COLOR.HEATHER_FOREST_PROOF
+
+                yPos = HEATHER_FOREST_PROOF_Y
+
+            Case MUG_COLOR.HEATHER_FOREST_PRINT
+
+                yPos = HEATHER_FOREST_PRINT_Y
+
+            Case MUG_COLOR.ANTIQUE_JADE_DOME_PROOF
+
+                yPos = ANTIQUE_JADE_DOME_PROOF_Y
+
+            Case MUG_COLOR.ANTIQUE_JADE_DOME_PRINT
+
+                yPos = ANTIQUE_JADE_DOME_PRINT_Y
+
+            Case MUG_COLOR.CHARCOAL_PROOF
+
+                yPos = CHARCOAL_PROOF_Y
+
+            Case MUG_COLOR.CHARCOAL_PRINT
+
+                yPos = CHARCOAL_PRINT_Y
+
+            Case MUG_COLOR.SPORTS_GREY_PROOF
+
+                yPos = SPORTS_GREY_PROOF_Y
+
+            Case MUG_COLOR.SPORTS_GREY_PRINT
+
+                yPos = SPORTS_GREY_PRINT_Y
+
+            Case MUG_COLOR.KIWI_PROOF
+
+                yPos = KIWI_PROOF_Y
+
+            Case MUG_COLOR.KIWI_PRINT
+
+                yPos = KIWI_PRINT_Y
+
+            Case MUG_COLOR.ANTIQUE_SAPPHIRE_PROOF
+
+                yPos = ANTIQUE_SAPPHIRE_PROOF_Y
+
+            Case MUG_COLOR.ANTIQUE_SAPPHIRE_PRINT
+
+                yPos = ANTIQUE_SAPPHIRE_PRINT_Y
+
+            Case MUG_COLOR.GRAPHITE_HEATHER_PROOF
+
+                yPos = GRAPHITE_HEATHER_PROOF_Y
+
+            Case MUG_COLOR.GRAPHITE_HEATHER_PRINT
+
+                yPos = GRAPHITE_HEATHER_PRINT_Y
+
+            Case MUG_COLOR.BLACKBERRY_PROOF
+
+                yPos = BLACKBERRY_PROOF_Y
+
+            Case MUG_COLOR.BLACKBERRY_PRINT
+
+                yPos = BLACKBERRY_PRINT_Y
+
+            Case MUG_COLOR.MIDNIGHT_PROOF
+
+                yPos = MIDNIGHT_PROOF_Y
+
+            Case MUG_COLOR.MIDNIGHT_PRINT
+
+                yPos = MIDNIGHT_PRINT_Y
+
+            Case MUG_COLOR.HONEY_PROOF
+
+                yPos = HONEY_PROOF_Y
+
+            Case MUG_COLOR.HONEY_PRINT
+
+                yPos = HONEY_PRINT_Y
+
+            Case MUG_COLOR.DAFFODIL_PROOF
+
+                yPos = DAFFODIL_PROOF_Y
+
+            Case MUG_COLOR.DAFFODIL_PRINT
+
+                yPos = DAFFODIL_PRINT_Y
+
+            Case MUG_COLOR.DAISY_PROOF
+
+                yPos = DAISY_PROOF_Y
+
+            Case MUG_COLOR.DAISY_PRINT
+
+                yPos = DAISY_PRINT_Y
+
+            Case MUG_COLOR.TEXAS_ORANGE_PROOF
+
+                yPos = TEXAS_ORANGE_PROOF_Y
+
+            Case MUG_COLOR.TEXAS_ORANGE_PRINT
+
+                yPos = TEXAS_ORANGE_PRINT_Y
+
+            Case MUG_COLOR.ANTIQUE_ORANGE_PRINT
+
+                yPos = ANTIQUE_ORANGE_PRINT_Y
+
+            Case MUG_COLOR.ANTIQUE_ORANGE_PROOF
+
+                yPos = ANTIQUE_ORANGE_PROOF_Y
+
+            Case MUG_COLOR.ANTIQUE_CHERRY_PRINT
+
+                yPos = ANTIQUE_CHERRY_PRINT_Y
+
+            Case MUG_COLOR.ANTIQUE_CHERRY_PROOF
+
+                yPos = ANTIQUE_CHERRY_PROOF_Y
+
+            Case MUG_COLOR.ORANGE_PRINT
+
+                yPos = ORANGE_PRINT_Y
+
+            Case MUG_COLOR.ORANGE_PROOF
+
+                yPos = ORANGE_PROOF_Y
+
+        End Select
+
+        Return yPos
+
+    End Function
+
 End Class
+
+Public Enum MUG_COLOR
+
+    HEATHER_NAVY_PROOF
+    HEATHER_NAVY_PRINT
+    DARK_HEATHER_PROOF
+    DARK_HEATHER_PRINT
+    HEATHER_INDIGO_PROOF
+    HEATHER_INDIGO_PRINT
+    STONE_BLUE_PROOF
+    STONE_BLUE_PRINT
+    NAVY_BLUE_PROOF
+    NAVY_BLUE_PRINT
+    AQUATIC_BLUE_PROOF
+    AQUATIC_BLUE_PRINT
+    INDIGO_BLUE_PROOF
+    INDIGO_BLUE_PRINT
+    CAROLINA_BLUE_PROOF
+    CAROLINA_BLUE_PRINT
+    IRIS_PROOF
+    IRIS_PRINT
+    VIOLET_PROOF
+    VIOLET_PRINT
+    LT_BLUE_PROOF
+    LT_BLUE_PRINT
+    HEATHER_MILITARY_PROOF
+    HEATHER_MILITARY_PRINT
+    STONEWASHED_GREEN_PROOF
+    STONEWASHED_GREEN_PRINT
+    MILITARY_GREEN_PROOF
+    MILITARY_GREEN_PRINT
+    FOREST_GREEN_PROOF
+    FOREST_GREEN_PRINT
+    PISTACHIO_PROOF
+    PISTACHIO_PRINT
+    ROYAL_BLUE_PROOF
+    ROYAL_BLUE_PRINT
+    PURPLE_PROOF
+    PURPLE_PRINT
+    JADE_DOME_PROOF
+    JADE_DOME_PRINT
+    COBALT_PROOF
+    COBALT_PRINT
+    SAPPHIRE_PROOF
+    SAPPHIRE_PRINT
+    BLUE_DUSK_PROOF
+    BLUE_DUSK_PRINT
+    CARDINAL_RED_PROOF
+    CARDINAL_RED_PRINT
+    RED_PROOF
+    RED_PRINT
+    HEATHER_RED_PROOF
+    HEATHER_RED_PRINT
+    HEATHER_CARDINAL_PROOF
+    HEATHER_CARDINAL_PRINT
+    HELICONIA_PROOF
+    HELICONIA_PRINT
+    LT_PINK_PROOF
+    LT_PINK_PRINT
+    LAVENDER_PROOF
+    LAVENDER_PRINT
+    ORCHID_PROOF
+    ORCHID_PRINT
+    GARNET_PROOF
+    GARNET_PRINT
+    MAROON_PROOF
+    MAROON_PRINT
+    METRO_BLUE_PROOF
+    METRO_BLUE_PRINT
+    SANDY_PROOF
+    SANDY_PRINT
+    PRAIRIE_DUST_PROOF
+    PRAIRIE_DUST_PRINT
+    NATURAL_PROOF
+    NATURAL_PRINT
+    DARK_CHOCOLATE_PROOF
+    DARK_CHOCOLATE_PRINT
+    SAND_PROOF
+    SAND_PRINT
+    BROWN_SAVANA_PROOF
+    BROWN_SAVANA_PRINT
+    CHESTNUT_PROOF
+    CHESTNUT_PRINT
+    HEATHER_DARK_CHOCOLATE_PROOF
+    HEATHER_DARK_CHOCOLATE_PRINT
+    IRISH_GREEN_PROOF
+    IRISH_GREEN_PRINT
+    HEATHER_FOREST_PROOF
+    HEATHER_FOREST_PRINT
+    ANTIQUE_JADE_DOME_PROOF
+    ANTIQUE_JADE_DOME_PRINT
+    CHARCOAL_PROOF
+    CHARCOAL_PRINT
+    SPORTS_GREY_PROOF
+    SPORTS_GREY_PRINT
+    KIWI_PROOF
+    KIWI_PRINT
+    ANTIQUE_SAPPHIRE_PROOF
+    ANTIQUE_SAPPHIRE_PRINT
+    GRAPHITE_HEATHER_PROOF
+    GRAPHITE_HEATHER_PRINT
+    BLACKBERRY_PROOF
+    BLACKBERRY_PRINT
+    MIDNIGHT_PROOF
+    MIDNIGHT_PRINT
+    HONEY_PROOF
+    HONEY_PRINT
+    DAFFODIL_PROOF
+    DAFFODIL_PRINT
+    DAISY_PROOF
+    DAISY_PRINT
+    TEXAS_ORANGE_PROOF
+    TEXAS_ORANGE_PRINT
+    ANTIQUE_ORANGE_PRINT
+    ANTIQUE_ORANGE_PROOF
+    ANTIQUE_CHERRY_PRINT
+    ANTIQUE_CHERRY_PROOF
+    ORANGE_PRINT
+    ORANGE_PROOF
+
+End Enum
