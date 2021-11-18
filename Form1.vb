@@ -1,4 +1,5 @@
-﻿Imports Photoshop
+﻿Imports Mugshot.mugColorsSampler_class
+Imports Photoshop
 Imports System.IO
 
 Public Class Form1
@@ -81,28 +82,38 @@ Public Class Form1
 
     Private Sub Form1_Shown(sender As Object, e As EventArgs) Handles Me.Shown
 
-        Dim updateClient As New autoUpdateClient
+        'DEBUG:
+        psApp = CreateObject("Photoshop.Application") 'start photoshop
+        psApp.DisplayDialogs = PsDialogModes.psDisplayNoDialogs 'turn off dialog boxes showing
+        System.Diagnostics.Process.Start(psApp.Path + "Photoshop.exe")
+        Dim mugColorSampler As New mugColorsSampler_class
+        Dim testColor As RGBColor = mugColorSampler.GetRGBColorFromShirtColors_NEWFile(psApp, MUG_COLOR.ANTIQUE_CHERRY_PRINT)
+        MessageBox.Show(testColor.Red.ToString + ", " + testColor.Green.ToString + ", " + testColor.Blue.ToString)
+        End
+        'END OF DEBUG
 
-        Try
+        'DEBUG: DISABLE AUTO-UPDATE SYSTEM DURING TESTING:
+        'Dim updateClient As New autoUpdateClient
 
-            updateClient.StartAutoUpdater()
+        'Try
 
-        Catch ex As Exception
+        '    updateClient.StartAutoUpdater()
 
-            WriteErrorLog("unable to start auto-updater")
+        'Catch ex As Exception
 
-        End Try
+        '    WriteErrorLog("unable to start auto-updater")
 
-        Try
+        'End Try
 
-            updateClient.WaitForClientMessage()
+        'Try
 
-        Catch ex As Exception
+        '    updateClient.WaitForClientMessage()
 
-            WriteErrorLog("problem waiting for client message")
+        'Catch ex As Exception
 
-        End Try
+        '    WriteErrorLog("problem waiting for client message")
 
+        'End Try
 
     End Sub
 
