@@ -81,16 +81,6 @@ Public Class Form1
 
     Private Sub Form1_Shown(sender As Object, e As EventArgs) Handles Me.Shown
 
-        'DEBUG:
-        psApp = CreateObject("Photoshop.Application") 'start photoshop
-        psApp.DisplayDialogs = PsDialogModes.psDisplayNoDialogs 'turn off dialog boxes showing
-        System.Diagnostics.Process.Start(psApp.Path + "Photoshop.exe")
-        Dim mugColorSampler As New mugColorsSampler_class
-        Dim testColor As RGBColor = mugColorSampler.GetRGBColorFromShirtColors_NEWFile(psApp, MUG_COLOR.ANTIQUE_CHERRY_PRINT)
-        MessageBox.Show(testColor.Red.ToString + ", " + testColor.Green.ToString + ", " + testColor.Blue.ToString)
-        End
-        'END OF DEBUG
-
         'DEBUG: DISABLE AUTO-UPDATE SYSTEM DURING TESTING:
         'Dim updateClient As New autoUpdateClient
 
@@ -268,12 +258,12 @@ Public Class Form1
                             'figure out current template name and assign it to curTemplateFilePath
                             Dim curTemplateFilePath As String = ""
                             If SmoothRadBtn.Checked = True Then
-
-                                curTemplateFilePath = BACKGROUND_TEMPLATES_DIRECTORY + "\" + "smooth_" + curColor.GetColorName() + ".psd"
+                                'LEFTOFF
+                                curTemplateFilePath = BACKGROUND_TEMPLATES_DIRECTORY + "\smooth_template.psd"
 
                             ElseIf roughRadBtn.Checked = True Then
 
-                                curTemplateFilePath = BACKGROUND_TEMPLATES_DIRECTORY + "\" + "rough_" + curColor.GetColorName() + ".psd"
+                                curTemplateFilePath = BACKGROUND_TEMPLATES_DIRECTORY + "\rough_template.psd"
 
                             End If
 
@@ -298,7 +288,9 @@ Public Class Form1
                             'go to current mug template document and paste artwork
                             psApp.ActiveDocument = curMugTemplateDoc
                             proofArtLayer.SetArtLayer(curMugTemplateDoc.ArtLayers.Item("Layer 1"))
+                            proofArtLayer.SetName(PROOF_LAYER_NAME)
                             printArtLayer.SetArtLayer(curMugTemplateDoc.ArtLayers.Item("Layer 2"))
+                            printArtLayer.SetName(PRINT_LAYER_NAME)
                             curMugTemplateDoc.ActiveLayer = proofArtLayer.GetArtLayer()
 
                             If twoImageRadBtn.Checked = True Then
@@ -322,15 +314,11 @@ Public Class Form1
                             ElseIf horWrapRadBtn.Checked = True Then
 
                                 wrapArtLayer.SetArtLayer(curMugTemplateDoc.Paste())
+                                wrapArtLayer.SetName(WRAP_ARTWORK_LAYER_NAME)
 
                                 'WRAP ARTWORK: W: 2326 px, H: 981 px, TOP-LEFT POS: 282, 92 px, CENTER POS: 1446, 582
                                 wrapArtLayer.ScaleUniformlyToFitDimensions(2326, 981)
                                 wrapArtLayer.MoveCenterToPosition(1446, 582)
-
-                                'set layers to final names
-                                proofArtLayer.SetName(PROOF_LAYER_NAME)
-                                printArtLayer.SetName(PRINT_LAYER_NAME)
-                                wrapArtLayer.SetName(WRAP_ARTWORK_LAYER_NAME)
 
                             End If
 
@@ -437,11 +425,11 @@ Public Class Form1
                             Dim curMockUpTemplateFilePath As String = ""
                             If SmoothRadBtn.Checked = True Then
 
-                                curMockUpTemplateFilePath = MOCK_UP_TEMPLATES_DIRECTORY + "\" + curColor.GetColorName() + "_smooth" + ".psd"
+                                curMockUpTemplateFilePath = MOCK_UP_TEMPLATES_DIRECTORY + "\smooth_template.psd"
 
                             ElseIf roughRadBtn.Checked = True Then
 
-                                curMockUpTemplateFilePath = MOCK_UP_TEMPLATES_DIRECTORY + "\" + curColor.GetColorName() + "_rough" + ".psd"
+                                curMockUpTemplateFilePath = MOCK_UP_TEMPLATES_DIRECTORY + "\rough_template.psd"
 
                             End If
 
