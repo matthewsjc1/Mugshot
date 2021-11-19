@@ -237,39 +237,43 @@ Public Class mugColorsSampler_class
 
     'PUBLIC METHODS****************************************************************************************************
 
-    Public Function GetRGBColorFromShirtColors_NEWFile(ByRef app As Application, ByVal MugColor As String) As RGBColor
+    Public Function GetRGBColorFromShirtColors_NEWFile(ByRef app As Application, ByVal MugColorName As String, ByRef closeFileWhenDone As Boolean) As RGBColor
 
         Dim previousUnitPreference As PsUnits = app.Preferences.RulerUnits
         app.Preferences.RulerUnits = PsUnits.psPixels
         Dim swatchDoc As Document = app.Open("\\ARTSERVER\Textile-Misc\Textile Files\In Progress & Ideas\MUGS\Shirt Colors_NEW.psd")
 
+        app.ActiveDocument = swatchDoc
+
         app.ActiveDocument.ColorSamplers.RemoveAll()
 
         Dim position(1) As Object 'the array passed to colorsampler.add MUST be type 'Object' to avoid throwing an error!
-        position(0) = GetColorSwatchXPosition(MugColor)
-        position(1) = GetColorSwatchYPosition(MugColor)
+        position(0) = GetColorSwatchXPosition(MugColorName)
+        position(1) = GetColorSwatchYPosition(MugColorName)
         Dim pointSample As ColorSampler = app.ActiveDocument.ColorSamplers.Add(position)
 
-        Dim finalRGB As New RGBColor
-        finalRGB.Red = pointSample.Color.RGB.Red
-        finalRGB.Green = pointSample.Color.RGB.Green
-        finalRGB.Blue = pointSample.Color.RGB.Blue
+        Dim finalRGB As New RGBColor With {.Red = pointSample.Color.RGB.Red, .Green = pointSample.Color.RGB.Green, .Blue = pointSample.Color.RGB.Blue}
 
         pointSample.Delete()
 
         app.Preferences.RulerUnits = previousUnitPreference 'restore previous ruler units preference
-        swatchDoc.Close(PsSaveOptions.psDoNotSaveChanges)
+
+        If closeFileWhenDone = True Then
+
+            swatchDoc.Close(PsSaveOptions.psDoNotSaveChanges)
+
+        End If
 
         Return finalRGB
 
     End Function
 
     'PRIVATE METHODS***************************************************************************************************
-    Private Function GetColorSwatchXPosition(ByVal mugColor As String) As Integer 'returns -1 if no matching color is found
+    Private Function GetColorSwatchXPosition(ByVal MugColorName As String) As Integer 'returns -1 if no matching color is found
 
         Dim xPos As Integer = -1
 
-        Select Case mugColor
+        Select Case MugColorName
 
             Case "heather_navy_proof"
 
@@ -745,11 +749,11 @@ Public Class mugColorsSampler_class
 
     End Function
 
-    Private Function GetColorSwatchYPosition(ByVal mugColor As String) As Integer 'returns -1 if no matching color is found
+    Private Function GetColorSwatchYPosition(ByVal MugColorName As String) As Integer 'returns -1 if no matching color is found
 
         Dim yPos As Integer = -1
 
-        Select Case mugColor
+        Select Case MugColorName
 
             Case "heather_navy_proof"
 

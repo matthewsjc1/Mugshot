@@ -1,7 +1,9 @@
-﻿Public Class colorSelector
+﻿Imports Photoshop
 
-    Private PICTURE_BOX_UNSELECTED_COLOR As Color = Color.Transparent
-    Private PICTURE_BOX_SELECTED_COLOR As Color = Color.LawnGreen
+Public Class colorSelector
+
+    Private PICTURE_BOX_UNSELECTED_COLOR As Color = color.Transparent
+    Private PICTURE_BOX_SELECTED_COLOR As Color = color.LawnGreen
 
     Private picBox As PictureBox
     Private isSelected As Boolean = False

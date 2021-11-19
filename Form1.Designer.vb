@@ -42,14 +42,14 @@ Partial Class Form1
         Me.selSaveFolderBtn = New System.Windows.Forms.Button()
         Me.artFileOpenDialog = New System.Windows.Forms.OpenFileDialog()
         Me.backOptionsGroupBox = New System.Windows.Forms.GroupBox()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.copyrightEnabledRadBtn = New System.Windows.Forms.RadioButton()
+        Me.copyrightDisabledRadBtn = New System.Windows.Forms.RadioButton()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.horWrapRadBtn = New System.Windows.Forms.RadioButton()
         Me.twoImageRadBtn = New System.Windows.Forms.RadioButton()
         Me.curSelImagePicBox = New System.Windows.Forms.PictureBox()
         Me.hidePhotoshopCheckbox = New System.Windows.Forms.CheckBox()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.copyrightDisabledRadBtn = New System.Windows.Forms.RadioButton()
-        Me.copyrightEnabledRadBtn = New System.Windows.Forms.RadioButton()
         CType(Me.roughPicBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.smoothPicBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.colorsGroupBox.SuspendLayout()
@@ -57,9 +57,9 @@ Partial Class Form1
         Me.artworkGroupBox.SuspendLayout()
         Me.saveFolderGroupBox.SuspendLayout()
         Me.backOptionsGroupBox.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.curSelImagePicBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'selColorsBtn
@@ -252,6 +252,39 @@ Partial Class Form1
         Me.backOptionsGroupBox.TabStop = False
         Me.backOptionsGroupBox.Text = "Mug Background Options"
         '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.copyrightEnabledRadBtn)
+        Me.GroupBox3.Controls.Add(Me.copyrightDisabledRadBtn)
+        Me.GroupBox3.Location = New System.Drawing.Point(29, 277)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(277, 55)
+        Me.GroupBox3.TabIndex = 16
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Add Copyright Info"
+        '
+        'copyrightEnabledRadBtn
+        '
+        Me.copyrightEnabledRadBtn.AutoSize = True
+        Me.copyrightEnabledRadBtn.Location = New System.Drawing.Point(149, 24)
+        Me.copyrightEnabledRadBtn.Name = "copyrightEnabledRadBtn"
+        Me.copyrightEnabledRadBtn.Size = New System.Drawing.Size(67, 19)
+        Me.copyrightEnabledRadBtn.TabIndex = 1
+        Me.copyrightEnabledRadBtn.Text = "Enabled"
+        Me.copyrightEnabledRadBtn.UseVisualStyleBackColor = True
+        '
+        'copyrightDisabledRadBtn
+        '
+        Me.copyrightDisabledRadBtn.AutoSize = True
+        Me.copyrightDisabledRadBtn.Checked = True
+        Me.copyrightDisabledRadBtn.Location = New System.Drawing.Point(33, 25)
+        Me.copyrightDisabledRadBtn.Name = "copyrightDisabledRadBtn"
+        Me.copyrightDisabledRadBtn.Size = New System.Drawing.Size(70, 19)
+        Me.copyrightDisabledRadBtn.TabIndex = 0
+        Me.copyrightDisabledRadBtn.TabStop = True
+        Me.copyrightDisabledRadBtn.Text = "Disabled"
+        Me.copyrightDisabledRadBtn.UseVisualStyleBackColor = True
+        '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.horWrapRadBtn)
@@ -305,39 +338,6 @@ Partial Class Form1
         Me.hidePhotoshopCheckbox.Text = "Run Photoshop in Silent Mode"
         Me.hidePhotoshopCheckbox.UseVisualStyleBackColor = True
         '
-        'GroupBox3
-        '
-        Me.GroupBox3.Controls.Add(Me.copyrightEnabledRadBtn)
-        Me.GroupBox3.Controls.Add(Me.copyrightDisabledRadBtn)
-        Me.GroupBox3.Location = New System.Drawing.Point(29, 277)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(277, 55)
-        Me.GroupBox3.TabIndex = 16
-        Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Add Copyright Info"
-        '
-        'copyrightDisabledRadBtn
-        '
-        Me.copyrightDisabledRadBtn.AutoSize = True
-        Me.copyrightDisabledRadBtn.Checked = True
-        Me.copyrightDisabledRadBtn.Location = New System.Drawing.Point(33, 25)
-        Me.copyrightDisabledRadBtn.Name = "copyrightDisabledRadBtn"
-        Me.copyrightDisabledRadBtn.Size = New System.Drawing.Size(70, 19)
-        Me.copyrightDisabledRadBtn.TabIndex = 0
-        Me.copyrightDisabledRadBtn.TabStop = True
-        Me.copyrightDisabledRadBtn.Text = "Disabled"
-        Me.copyrightDisabledRadBtn.UseVisualStyleBackColor = True
-        '
-        'copyrightEnabledRadBtn
-        '
-        Me.copyrightEnabledRadBtn.AutoSize = True
-        Me.copyrightEnabledRadBtn.Location = New System.Drawing.Point(149, 24)
-        Me.copyrightEnabledRadBtn.Name = "copyrightEnabledRadBtn"
-        Me.copyrightEnabledRadBtn.Size = New System.Drawing.Size(67, 19)
-        Me.copyrightEnabledRadBtn.TabIndex = 1
-        Me.copyrightEnabledRadBtn.Text = "Enabled"
-        Me.copyrightEnabledRadBtn.UseVisualStyleBackColor = True
-        '
         'Form1
         '
         Me.AcceptButton = Me.nextBtn
@@ -355,7 +355,6 @@ Partial Class Form1
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "Form1"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Mugshot - Easy Mug Mock Up and Template Maker"
         CType(Me.roughPicBox, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.smoothPicBox, System.ComponentModel.ISupportInitialize).EndInit()
@@ -368,11 +367,11 @@ Partial Class Form1
         Me.saveFolderGroupBox.ResumeLayout(False)
         Me.saveFolderGroupBox.PerformLayout()
         Me.backOptionsGroupBox.ResumeLayout(False)
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.curSelImagePicBox, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

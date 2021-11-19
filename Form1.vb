@@ -33,24 +33,25 @@ Public Class Form1
 
     Private psApp As Photoshop.Application
     Private selectedColors As New ArrayList()
+    Private mugColorsSampler As New mugColorsSampler_class
     Private artFileDoc As Document
     Private artFileNameNoEx As String = ""
     Private artFilePath As String = ""
     Private saveFolderPath As String = ""
-    Private sourceArtLayer As New easyPhotoshopArtLayer
-    Private wrapLeftSourceArtLayer As New easyPhotoshopArtLayer
-    Private wrapRightSourceArtLayer As New easyPhotoshopArtLayer
-    Private copyrightSourceArtLayer As New easyPhotoshopArtLayer
-    Private leftArtLayer As New easyPhotoshopArtLayer
-    Private rightArtLayer As New easyPhotoshopArtLayer
-    Private wrapArtLayer As New easyPhotoshopArtLayer
-    Private proofArtLayer As New easyPhotoshopArtLayer
-    Private printArtLayer As New easyPhotoshopArtLayer
-    Private mockupBaseArtLayer As New easyPhotoshopArtLayer
-    Private mockupLeftArtLayer As New easyPhotoshopArtLayer
-    Private mockupRightArtLayer As New easyPhotoshopArtLayer
-    Private overlayArtLayer As New easyPhotoshopArtLayer
-    Private copyrightArtLayer As New easyPhotoshopArtLayer
+    Private sourceEasyArtLayer As New easyPhotoshopArtLayer
+    Private wrapLeftSourceEasyArtLayer As New easyPhotoshopArtLayer
+    Private wrapRightSourceEasyArtLayer As New easyPhotoshopArtLayer
+    Private copyrightSourceEasyArtLayer As New easyPhotoshopArtLayer
+    Private leftEasyArtLayer As New easyPhotoshopArtLayer
+    Private rightEasyArtLayer As New easyPhotoshopArtLayer
+    Private wrapEasyArtLayer As New easyPhotoshopArtLayer
+    Private proofEasyArtLayer As New easyPhotoshopArtLayer
+    Private printEasyArtLayer As New easyPhotoshopArtLayer
+    Private mockupBaseEasyArtLayer As New easyPhotoshopArtLayer
+    Private mockupLeftEasyArtLayer As New easyPhotoshopArtLayer
+    Private mockupRightEasyArtLayer As New easyPhotoshopArtLayer
+    Private overlayEasyArtLayer As New easyPhotoshopArtLayer
+    Private copyrightEasyArtLayer As New easyPhotoshopArtLayer
 
     'PUBLIC ROUTINES=======================================================
 
@@ -127,7 +128,6 @@ Public Class Form1
                     Try 'attempt to open photoshop, process, and save files
 
                         progressForm.Reset()
-                        progressForm.TopMost = True
                         progressForm.Show()
 
                         Dim colorCount As Integer = selectedColors.Count
@@ -198,7 +198,7 @@ Public Class Form1
                             artFileDoc.Trim(PsTrimType.psTransparentPixels, True, True, True, True)
                             Dim originalWidth As Double = artFileDoc.Width()
                             Dim originalHeight As Double = artFileDoc.Height()
-                            sourceArtLayer.SetArtLayer(artFileDoc.ActiveLayer)
+                            sourceEasyArtLayer.SetArtLayer(artFileDoc.ActiveLayer)
 
                         ElseIf Path.GetExtension(artFilePath) = ".psd" Then 'if illustrator file used
 
@@ -216,7 +216,7 @@ Public Class Form1
                                 artFileDoc.Paste()
                                 originalWidth = artFileDoc.Width()
                                 originalHeight = artFileDoc.Height()
-                                sourceArtLayer.SetArtLayer(artFileDoc.ActiveLayer)
+                                sourceEasyArtLayer.SetArtLayer(artFileDoc.ActiveLayer)
                                 artFileDoc.BackgroundLayer.Visible = False
 
                             Catch ex As Exception
@@ -258,7 +258,7 @@ Public Class Form1
                             'figure out current template name and assign it to curTemplateFilePath
                             Dim curTemplateFilePath As String = ""
                             If SmoothRadBtn.Checked = True Then
-                                'LEFTOFF
+
                                 curTemplateFilePath = BACKGROUND_TEMPLATES_DIRECTORY + "\smooth_template.psd"
 
                             ElseIf roughRadBtn.Checked = True Then
@@ -283,42 +283,45 @@ Public Class Form1
                             My.Application.DoEvents()
 
                             psApp.ActiveDocument = artFileDoc
-                            sourceArtLayer.CopyToClipboard(True)
+                            sourceEasyArtLayer.CopyToClipboard(True)
 
-                            'go to current mug template document and paste artwork
+                            'go to current mug template document and set it up
                             psApp.ActiveDocument = curMugTemplateDoc
-                            proofArtLayer.SetArtLayer(curMugTemplateDoc.ArtLayers.Item("Layer 1"))
-                            proofArtLayer.SetName(PROOF_LAYER_NAME)
-                            printArtLayer.SetArtLayer(curMugTemplateDoc.ArtLayers.Item("Layer 2"))
-                            printArtLayer.SetName(PRINT_LAYER_NAME)
-                            curMugTemplateDoc.ActiveLayer = proofArtLayer.GetArtLayer()
+
+                            proofEasyArtLayer.SetArtLayer(curMugTemplateDoc.ArtLayers.Item("Layer 1"))
+
+                            printEasyArtLayer.SetArtLayer(curMugTemplateDoc.ArtLayers.Item("Layer 2"))
+
+                            ChangeTemplateBackgroundColor(curMugTemplateDoc, proofEasyArtLayer.GetArtLayer(), printEasyArtLayer.GetArtLayer(), curColor.GetColorName())
+
+                            curMugTemplateDoc.ActiveLayer = proofEasyArtLayer.GetArtLayer()
 
                             If twoImageRadBtn.Checked = True Then
 
-                                leftArtLayer.SetArtLayer(curMugTemplateDoc.Paste())
+                                leftEasyArtLayer.SetArtLayer(curMugTemplateDoc.Paste())
 
                                 'LEFT ARTWORK: W: 826 px, H: 981 px, CENTER POS: 695, 582 px
-                                leftArtLayer.ScaleUniformlyToFitDimensions(826, 981)
-                                leftArtLayer.MoveCenterToPosition(695, 582)
+                                leftEasyArtLayer.ScaleUniformlyToFitDimensions(826, 981)
+                                leftEasyArtLayer.MoveCenterToPosition(695, 582)
 
                                 'RIGHT ARTWORK: W: 826 px, H: 981 px, CENTER POS: 2196, 582 px
-                                rightArtLayer.SetArtLayer(leftArtLayer.Duplicate(curMugTemplateDoc, PsElementPlacement.psPlaceAtBeginning))
-                                rightArtLayer.MoveCenterToPosition(2196, 582)
+                                rightEasyArtLayer.SetArtLayer(leftEasyArtLayer.Duplicate(curMugTemplateDoc, PsElementPlacement.psPlaceAtBeginning))
+                                rightEasyArtLayer.MoveCenterToPosition(2196, 582)
 
                                 'set layers to final names
-                                proofArtLayer.SetName(PROOF_LAYER_NAME)
-                                printArtLayer.SetName(PRINT_LAYER_NAME)
-                                leftArtLayer.SetName(LEFT_ARTWORK_LAYER_NAME)
-                                rightArtLayer.SetName(RIGHT_ARTWORK_LAYER_NAME)
+                                proofEasyArtLayer.SetName(PROOF_LAYER_NAME)
+                                printEasyArtLayer.SetName(PRINT_LAYER_NAME)
+                                leftEasyArtLayer.SetName(LEFT_ARTWORK_LAYER_NAME)
+                                rightEasyArtLayer.SetName(RIGHT_ARTWORK_LAYER_NAME)
 
                             ElseIf horWrapRadBtn.Checked = True Then
 
-                                wrapArtLayer.SetArtLayer(curMugTemplateDoc.Paste())
-                                wrapArtLayer.SetName(WRAP_ARTWORK_LAYER_NAME)
+                                wrapEasyArtLayer.SetArtLayer(curMugTemplateDoc.Paste())
+                                wrapEasyArtLayer.SetName(WRAP_ARTWORK_LAYER_NAME)
 
                                 'WRAP ARTWORK: W: 2326 px, H: 981 px, TOP-LEFT POS: 282, 92 px, CENTER POS: 1446, 582
-                                wrapArtLayer.ScaleUniformlyToFitDimensions(2326, 981)
-                                wrapArtLayer.MoveCenterToPosition(1446, 582)
+                                wrapEasyArtLayer.ScaleUniformlyToFitDimensions(2326, 981)
+                                wrapEasyArtLayer.MoveCenterToPosition(1446, 582)
 
                             End If
 
@@ -330,18 +333,18 @@ Public Class Form1
 
                                 'copy and close
                                 psApp.ActiveDocument = copyrightDoc
-                                copyrightSourceArtLayer.SetArtLayer(copyrightDoc.ActiveLayer)
-                                copyrightSourceArtLayer.CopyToClipboard(True)
+                                copyrightSourceEasyArtLayer.SetArtLayer(copyrightDoc.ActiveLayer)
+                                copyrightSourceEasyArtLayer.CopyToClipboard(True)
 
                                 copyrightDoc.Close(PsSaveOptions.psDoNotSaveChanges)
 
                                 'paste and reposition
                                 psApp.ActiveDocument = curMugTemplateDoc
-                                copyrightArtLayer.SetArtLayer(curMugTemplateDoc.Paste())
-                                copyrightArtLayer.MoveCenterToPosition(74, 921)
+                                copyrightEasyArtLayer.SetArtLayer(curMugTemplateDoc.Paste())
+                                copyrightEasyArtLayer.MoveCenterToPosition(74, 921)
 
                                 'set copyright layer final name
-                                copyrightArtLayer.SetName(COPYRIGHT_LAYER_NAME)
+                                copyrightEasyArtLayer.SetName(COPYRIGHT_LAYER_NAME)
 
                             End If
 
@@ -358,8 +361,8 @@ Public Class Form1
                             Try
 
                                 'save '_TO_PRINT' tif
-                                proofArtLayer.SetVisibilityToOff()
-                                printArtLayer.SetVisibilityToOn()
+                                proofEasyArtLayer.SetVisibilityToOff()
+                                printEasyArtLayer.SetVisibilityToOn()
                                 Dim tifFilePath As String = saveFolderPath + "\" + artFileNameNoEx + "_" + curColor.GetColorName() + "_MUG_TO_PRINT.tif"
                                 Dim tifOptions As New TiffSaveOptions
                                 tifOptions.AlphaChannels = True
@@ -389,8 +392,8 @@ Public Class Form1
                             Try
 
                                 'save '_MUG' psd
-                                proofArtLayer.SetVisibilityToOn()
-                                printArtLayer.SetVisibilityToOn()
+                                proofEasyArtLayer.SetVisibilityToOn()
+                                printEasyArtLayer.SetVisibilityToOn()
 
                             Catch ex As Exception
 
@@ -440,19 +443,19 @@ Public Class Form1
                             If twoImageRadBtn.Checked Then
 
                                 psApp.ActiveDocument = artFileDoc
-                                sourceArtLayer.CopyToClipboard(True)
+                                sourceEasyArtLayer.CopyToClipboard(True)
                                 psApp.ActiveDocument = curMockUpDoc
-                                mockupBaseArtLayer.SetArtLayer(curMockUpDoc.ArtLayers.Item("Layer 1"))
-                                curMockUpDoc.ActiveLayer = mockupBaseArtLayer.GetArtLayer()
-                                mockupLeftArtLayer.SetArtLayer(curMockUpDoc.Paste())
+                                mockupBaseEasyArtLayer.SetArtLayer(curMockUpDoc.ArtLayers.Item("Layer 1"))
+                                curMockUpDoc.ActiveLayer = mockupBaseEasyArtLayer.GetArtLayer()
+                                mockupLeftEasyArtLayer.SetArtLayer(curMockUpDoc.Paste())
 
                                 'LEFT ARTWORK: W: 900 px, H: 1072 px, CENTER POS: 1015, 900 px
-                                mockupLeftArtLayer.ScaleUniformlyToFitDimensions(900, 1072)
-                                mockupLeftArtLayer.MoveCenterToPosition(1015, 900)
+                                mockupLeftEasyArtLayer.ScaleUniformlyToFitDimensions(900, 1072)
+                                mockupLeftEasyArtLayer.MoveCenterToPosition(1015, 900)
 
                                 'RIGHT ARTWORK: W: 900 px, H: 1072 px, CENTER POS: 2162, 900 px
-                                mockupRightArtLayer.SetArtLayer(mockupLeftArtLayer.Duplicate(curMockUpDoc, PsElementPlacement.psPlaceAtBeginning))
-                                mockupRightArtLayer.MoveCenterToPosition(2162, 900)
+                                mockupRightEasyArtLayer.SetArtLayer(mockupLeftEasyArtLayer.Duplicate(curMockUpDoc, PsElementPlacement.psPlaceAtBeginning))
+                                mockupRightEasyArtLayer.MoveCenterToPosition(2162, 900)
 
                             ElseIf horWrapRadBtn.Checked Then
 
@@ -462,12 +465,12 @@ Public Class Form1
                                 psApp.ActiveDocument = leftArtDoc
                                 leftArtDoc.Trim(PsTrimType.psTransparentPixels, True, True, True, True)
                                 leftArtDoc.ResizeCanvas(leftArtDoc.Width / 2, leftArtDoc.Height, PsAnchorPosition.psMiddleLeft)
-                                wrapLeftSourceArtLayer.SetArtLayer(leftArtDoc.ActiveLayer)
-                                wrapLeftSourceArtLayer.CopyToClipboard(True)
+                                wrapLeftSourceEasyArtLayer.SetArtLayer(leftArtDoc.ActiveLayer)
+                                wrapLeftSourceEasyArtLayer.CopyToClipboard(True)
                                 psApp.ActiveDocument = curMockUpDoc
-                                mockupLeftArtLayer.SetArtLayer(curMockUpDoc.Paste())
-                                mockupLeftArtLayer.ScaleUniformlyToFitDimensions(942, 1072) 'fit left half of design to left mug
-                                mockupLeftArtLayer.MoveRightCenterToPosition(1489, 900) 'move to center right
+                                mockupLeftEasyArtLayer.SetArtLayer(curMockUpDoc.Paste())
+                                mockupLeftEasyArtLayer.ScaleUniformlyToFitDimensions(942, 1072) 'fit left half of design to left mug
+                                mockupLeftEasyArtLayer.MoveRightCenterToPosition(1489, 900) 'move to center right
 
                                 leftArtDoc.Close(PsSaveOptions.psDoNotSaveChanges)
 
@@ -477,12 +480,12 @@ Public Class Form1
                                 psApp.ActiveDocument = rightArtDoc
                                 rightArtDoc.Trim(PsTrimType.psTransparentPixels, True, True, True, True)
                                 rightArtDoc.ResizeCanvas(rightArtDoc.Width / 2, rightArtDoc.Height, PsAnchorPosition.psMiddleRight)
-                                wrapRightSourceArtLayer.SetArtLayer(rightArtDoc.ActiveLayer)
-                                wrapRightSourceArtLayer.CopyToClipboard(True)
+                                wrapRightSourceEasyArtLayer.SetArtLayer(rightArtDoc.ActiveLayer)
+                                wrapRightSourceEasyArtLayer.CopyToClipboard(True)
                                 psApp.ActiveDocument = curMockUpDoc
-                                mockupRightArtLayer.SetArtLayer(curMockUpDoc.Paste())
-                                mockupRightArtLayer.ScaleUniformlyToFitDimensions(942, 1072) 'fit right half of design to right mug
-                                mockupRightArtLayer.MoveLeftCenterToPosition(1695, 900)
+                                mockupRightEasyArtLayer.SetArtLayer(curMockUpDoc.Paste())
+                                mockupRightEasyArtLayer.ScaleUniformlyToFitDimensions(942, 1072) 'fit right half of design to right mug
+                                mockupRightEasyArtLayer.MoveLeftCenterToPosition(1695, 900)
 
                                 rightArtDoc.Close(PsSaveOptions.psDoNotSaveChanges)
 
@@ -492,17 +495,17 @@ Public Class Form1
 
                             'add shading overlay
                             psApp.ActiveDocument = overlayDoc
-                            overlayArtLayer.SetArtLayer(overlayDoc.ArtLayers.Item("Layer 1"))
-                            overlayArtLayer.CopyToClipboard(True)
+                            overlayEasyArtLayer.SetArtLayer(overlayDoc.ArtLayers.Item("Layer 1"))
+                            overlayEasyArtLayer.CopyToClipboard(True)
                             psApp.ActiveDocument = curMockUpDoc
-                            curMockUpDoc.ActiveLayer = mockupRightArtLayer.GetArtLayer()
-                            overlayArtLayer.SetArtLayer(curMockUpDoc.Paste())
-                            overlayArtLayer.SetBlendMode(PsBlendMode.psMultiply)
+                            curMockUpDoc.ActiveLayer = mockupRightEasyArtLayer.GetArtLayer()
+                            overlayEasyArtLayer.SetArtLayer(curMockUpDoc.Paste())
+                            overlayEasyArtLayer.SetBlendMode(PsBlendMode.psMultiply)
 
                             'set layers to final names
-                            mockupLeftArtLayer.SetName(LEFT_ARTWORK_LAYER_NAME)
-                            mockupRightArtLayer.SetName(RIGHT_ARTWORK_LAYER_NAME)
-                            overlayArtLayer.SetName(OVERLAY_LAYER_NAME)
+                            mockupLeftEasyArtLayer.SetName(LEFT_ARTWORK_LAYER_NAME)
+                            mockupRightEasyArtLayer.SetName(RIGHT_ARTWORK_LAYER_NAME)
+                            overlayEasyArtLayer.SetName(OVERLAY_LAYER_NAME)
 
                             'UPDATE PROGRESS FORM**************************
                             progressForm.IncrementProgressBar(1)
@@ -608,6 +611,22 @@ Public Class Form1
         End If
 
         Me.Activate() 'bring Mugshot back to foreground
+
+    End Sub
+
+    Private Sub ChangeTemplateBackgroundColor(ByRef doc As Document, ByRef proofLayer As ArtLayer, ByRef printLayer As ArtLayer, ByVal colorName As String)
+
+        Dim mugColorsSampler As New mugColorsSampler_class
+
+        Dim proofColor As RGBColor = mugColorsSampler.GetRGBColorFromShirtColors_NEWFile(psApp, colorName + "_proof", False)
+        Dim printColor As RGBColor = mugColorsSampler.GetRGBColorFromShirtColors_NEWFile(psApp, colorName + "_print", True)
+
+        psApp.ActiveDocument = doc
+
+        doc.Selection.SelectAll()
+        'LEFTOFF
+        'doc.Selection.Grow(50, False)
+        End 'DEBUG
 
     End Sub
 

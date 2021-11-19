@@ -115,6 +115,8 @@ Public Class progressForm
 
         End Select
 
+        My.Application.DoEvents()
+
     End Sub
 
 End Class

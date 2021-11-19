@@ -33,23 +33,23 @@ Partial Class progressForm
         '
         'curProgressBar
         '
-        Me.curProgressBar.Location = New System.Drawing.Point(52, 172)
+        Me.curProgressBar.Location = New System.Drawing.Point(12, 133)
         Me.curProgressBar.Name = "curProgressBar"
-        Me.curProgressBar.Size = New System.Drawing.Size(365, 23)
+        Me.curProgressBar.Size = New System.Drawing.Size(190, 23)
         Me.curProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous
         Me.curProgressBar.TabIndex = 0
         '
         'curTaskLbl
         '
         Me.curTaskLbl.AutoSize = True
-        Me.curTaskLbl.Location = New System.Drawing.Point(52, 143)
+        Me.curTaskLbl.Location = New System.Drawing.Point(15, 162)
         Me.curTaskLbl.Name = "curTaskLbl"
         Me.curTaskLbl.Size = New System.Drawing.Size(0, 15)
         Me.curTaskLbl.TabIndex = 1
         '
         'dogPicBox
         '
-        Me.dogPicBox.Location = New System.Drawing.Point(133, 12)
+        Me.dogPicBox.Location = New System.Drawing.Point(11, 11)
         Me.dogPicBox.Name = "dogPicBox"
         Me.dogPicBox.Size = New System.Drawing.Size(190, 101)
         Me.dogPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -62,7 +62,7 @@ Partial Class progressForm
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(186, 116)
+        Me.Label1.Location = New System.Drawing.Point(64, 115)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(88, 15)
         Me.Label1.TabIndex = 3
@@ -72,7 +72,7 @@ Partial Class progressForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(471, 217)
+        Me.ClientSize = New System.Drawing.Size(212, 188)
         Me.ControlBox = False
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.dogPicBox)
@@ -80,7 +80,6 @@ Partial Class progressForm
         Me.Controls.Add(Me.curProgressBar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Name = "progressForm"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Mugshot: Processing..."
         Me.TopMost = True
         CType(Me.dogPicBox, System.ComponentModel.ISupportInitialize).EndInit()
