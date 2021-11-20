@@ -82,28 +82,27 @@ Public Class Form1
 
     Private Sub Form1_Shown(sender As Object, e As EventArgs) Handles Me.Shown
 
-        'DEBUG: DISABLE AUTO-UPDATE SYSTEM DURING TESTING:
-        'Dim updateClient As New autoUpdateClient
+        Dim updateClient As New autoUpdateClient
 
-        'Try
+        Try
 
-        '    updateClient.StartAutoUpdater()
+            updateClient.StartAutoUpdater()
 
-        'Catch ex As Exception
+        Catch ex As Exception
 
-        '    WriteErrorLog("unable to start auto-updater")
+            WriteErrorLog("unable to start auto-updater")
 
-        'End Try
+        End Try
 
-        'Try
+        Try
 
-        '    updateClient.WaitForClientMessage()
+            updateClient.WaitForClientMessage()
 
-        'Catch ex As Exception
+        Catch ex As Exception
 
-        '    WriteErrorLog("problem waiting for client message")
+            WriteErrorLog("problem waiting for client message")
 
-        'End Try
+        End Try
 
     End Sub
 
@@ -138,8 +137,6 @@ Public Class Form1
 
                             'UPDATE PROGRESS FORM**************************
                             progressForm.SetCurrentTaskText("Linking to Photoshop COM")
-                            progressForm.Invalidate()
-                            My.Application.DoEvents()
 
                             psApp = CreateObject("Photoshop.Application") 'start photoshop
                             psApp.DisplayDialogs = PsDialogModes.psDisplayNoDialogs 'turn off dialog boxes showing
@@ -159,8 +156,6 @@ Public Class Form1
 
                             'UPDATE PROGRESS FORM**************************
                             progressForm.IncrementProgressBar(1)
-                            progressForm.Invalidate()
-                            My.Application.DoEvents()
 
                         Catch ex As Exception
 
@@ -173,21 +168,15 @@ Public Class Form1
 
                         'UPDATE PROGRESS FORM**************************
                         progressForm.SetCurrentTaskText("Setting temporary preferences")
-                        progressForm.Invalidate()
-                        My.Application.DoEvents()
 
                         Dim previousUnitPreference As Photoshop.PsUnits = psApp.Preferences.RulerUnits
                         psApp.Preferences.RulerUnits = Photoshop.PsUnits.psPixels
 
                         'UPDATE PROGRESS FORM**************************
                         progressForm.IncrementProgressBar(1)
-                        progressForm.Invalidate()
-                        My.Application.DoEvents()
 
                         'UPDATE PROGRESS FORM**************************
                         progressForm.SetCurrentTaskText("Processing art file")
-                        progressForm.Invalidate()
-                        My.Application.DoEvents()
 
                         If Path.GetExtension(artFilePath) = ".ai" Then 'if illustrator file selected
 
@@ -239,15 +228,12 @@ Public Class Form1
 
                         'UPDATE PROGRESS FORM**************************
                         progressForm.IncrementProgressBar(1)
-                        progressForm.Invalidate()
 
                         Dim overlayFilePath As String = AppContext.BaseDirectory + MOCK_UP_TEMPLATES_DIRECTORY + "\overlay.psd"
                         Dim overlayDoc As Document = psApp.Open(overlayFilePath)
 
                         'UPDATE PROGRESS FORM**************************
                         progressForm.SetCurrentTaskText("Open templates")
-                        progressForm.Invalidate()
-                        My.Application.DoEvents()
 
                         For curColorIndex As Integer = 0 To selectedColors.Count - 1 'loop through each color
 
@@ -271,16 +257,12 @@ Public Class Form1
 
                             'UPDATE PROGRESS FORM**************************
                             progressForm.IncrementProgressBar(1)
-                            progressForm.Invalidate()
-                            My.Application.DoEvents()
 
                             'MUG TEMPLATE SECTION**************************************************************************
                             '**********************************************************************************************
 
                             'UPDATE PROGRESS FORM**************************
                             progressForm.SetCurrentTaskText("Processing current color template")
-                            progressForm.Invalidate()
-                            My.Application.DoEvents()
 
                             psApp.ActiveDocument = artFileDoc
                             sourceEasyArtLayer.CopyToClipboard(True)
@@ -350,13 +332,9 @@ Public Class Form1
 
                             'UPDATE PROGRESS FORM**************************
                             progressForm.IncrementProgressBar(1)
-                            progressForm.Invalidate()
-                            My.Application.DoEvents()
 
                             'UPDATE PROGRESS FORM**************************
                             progressForm.SetCurrentTaskText("Saving TO PRINT file")
-                            progressForm.Invalidate()
-                            My.Application.DoEvents()
 
                             Try
 
@@ -381,13 +359,9 @@ Public Class Form1
 
                             'UPDATE PROGRESS FORM**************************
                             progressForm.IncrementProgressBar(1)
-                            progressForm.Invalidate()
-                            My.Application.DoEvents() 'give events a chance to catch up
 
                             'UPDATE PROGRESS FORM**************************
                             progressForm.SetCurrentTaskText("Saving MUG file")
-                            progressForm.Invalidate()
-                            My.Application.DoEvents() 'give events a chance to catch up
 
                             Try
 
@@ -408,8 +382,6 @@ Public Class Form1
 
                             'UPDATE PROGRESS FORM**************************
                             progressForm.IncrementProgressBar(1)
-                            progressForm.Invalidate()
-                            My.Application.DoEvents() 'give events a chance to catch up
 
                             curMugTemplateDoc.Close(PsSaveOptions.psDoNotSaveChanges) 'close current mug template
 
@@ -421,8 +393,6 @@ Public Class Form1
 
                             'UPDATE PROGRESS FORM**************************
                             progressForm.SetCurrentTaskText("Processing current color mock up")
-                            progressForm.Invalidate()
-                            My.Application.DoEvents() 'give events a chance to catch up
 
                             'figure out current template name and assign it to curMockUpTemplatePath
                             Dim curMockUpTemplateFilePath As String = ""
@@ -509,13 +479,9 @@ Public Class Form1
 
                             'UPDATE PROGRESS FORM**************************
                             progressForm.IncrementProgressBar(1)
-                            progressForm.Invalidate()
-                            My.Application.DoEvents() 'give events a chance to catch up
 
                             'UPDATE PROGRESS FORM**************************
                             progressForm.SetCurrentTaskText("Saving ON MUG jpg")
-                            progressForm.Invalidate()
-                            My.Application.DoEvents() 'give events a chance to catch up
 
                             Try
 
@@ -539,13 +505,9 @@ Public Class Form1
 
                             'UPDATE PROGRESS FORM**************************
                             progressForm.IncrementProgressBar(1)
-                            progressForm.Invalidate()
-                            My.Application.DoEvents() 'give events a chance to catch up
 
                             'UPDATE PROGRESS FORM**************************
                             progressForm.SetCurrentTaskText("Saving ON MUG psd")
-                            progressForm.Invalidate()
-                            My.Application.DoEvents() 'give events a chance to catch up
 
                             'save '_ON_MUG' mock up psd
                             psdFileName = saveFolderPath + "\" + artFileNameNoEx + "_" + curColor.GetColorName() + "_ON_MUG.psd"
@@ -553,8 +515,6 @@ Public Class Form1
 
                             'UPDATE PROGRESS FORM**************************
                             progressForm.IncrementProgressBar(1)
-                            progressForm.Invalidate()
-                            My.Application.DoEvents() 'give events a chance to catch up
 
                             curMockUpDoc.Close(PsSaveOptions.psDoNotSaveChanges)
 
@@ -623,10 +583,34 @@ Public Class Form1
 
         psApp.ActiveDocument = doc
 
-        doc.Selection.SelectAll()
-        'LEFTOFF
-        'doc.Selection.Grow(50, False)
-        End 'DEBUG
+        doc.ActiveLayer = proofLayer
+        MakeSelection(doc, 500, 500, 100, 100)
+        doc.Selection.Grow(10, True)
+        doc.Selection.Fill(proofColor)
+        doc.Selection.Deselect()
+        proofLayer.Visible = False
+
+        doc.ActiveLayer = printLayer
+        MakeSelection(doc, 500, 500, 100, 100)
+        doc.Selection.Grow(10, True)
+        doc.Selection.Fill(printColor)
+        doc.Selection.Deselect()
+
+        proofLayer.Visible = True
+        doc.ActiveLayer = proofLayer
+
+    End Sub
+
+    Private Sub MakeSelection(ByRef doc As Document, ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer)
+
+        Dim psArray1() As Object = {x, y}
+        Dim psArray2() As Object = {w, y}
+        Dim psArray3() As Object = {x, h}
+        Dim psArray4() As Object = {x, h}
+
+        Dim psArray() As Object = {psArray1, psArray2, psArray3, psArray4}
+
+        doc.Selection.Select(psArray)
 
     End Sub
 

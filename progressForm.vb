@@ -39,6 +39,8 @@ Public Class progressForm
     Public Sub IncrementProgressBar(ByVal incrementAmount As Integer)
 
         curProgressBar.Increment(incrementAmount)
+        curProgressBar.Invalidate()
+        My.Application.DoEvents()
 
     End Sub
 
