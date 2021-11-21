@@ -3,13 +3,11 @@ Imports System.IO
 
 Public Class Form1
 
-    'directory name constants
     Private Const BACKGROUND_TEMPLATES_DIRECTORY As String = "background_templates"
     Private Const MOCK_UP_TEMPLATES_DIRECTORY As String = "mock_up_templates"
     Private Const PREVIEW_IMAGES_DIRECTORY As String = "preview_images"
     Private Const COPYRIGHT_TEMPLATE_DIRECTORY As String = "copyright_template"
 
-    'layer name constants
     Private Const LEFT_ARTWORK_LAYER_NAME As String = "Left Artwork"
     Private Const RIGHT_ARTWORK_LAYER_NAME As String = "Right Artwork"
     Private Const WRAP_ARTWORK_LAYER_NAME As String = "Wrap Artwork"
@@ -18,7 +16,6 @@ Public Class Form1
     Private Const OVERLAY_LAYER_NAME As String = "Shading Overlay"
     Private Const COPYRIGHT_LAYER_NAME As String = "Copyright Info"
 
-    'preview image constants
     Private Const PREVIEW_IMAGE_BLANK_MUG As String = "blank_mug.png"
     Private Const PREVIEW_IMAGE_ROUGH_BACKGROUND_SELECTED As String = "rough_background_selected.png"
     Private Const PREVIEW_IMAGE_ROUGH_DESIGN_SELECTED As String = "rough_design_selected.png"
@@ -32,12 +29,19 @@ Public Class Form1
     Private Const PREVIEW_IMAGE_SMOOTH_WRAP_SELECTED As String = "smooth_design_wrap_selected.png"
 
     Private psApp As Photoshop.Application
+
     Private selectedColors As New ArrayList()
+
     Private mugColorsSampler As New mugColorsSampler_class
+
     Private artFileDoc As Document
+    Private overlayDoc As Document
+
     Private artFileNameNoEx As String = ""
     Private artFilePath As String = ""
     Private saveFolderPath As String = ""
+    Private overlayFilePath As String = ""
+
     Private sourceEasyArtLayer As New easyPhotoshopArtLayer
     Private wrapLeftSourceEasyArtLayer As New easyPhotoshopArtLayer
     Private wrapRightSourceEasyArtLayer As New easyPhotoshopArtLayer
@@ -52,6 +56,7 @@ Public Class Form1
     Private mockupRightEasyArtLayer As New easyPhotoshopArtLayer
     Private overlayEasyArtLayer As New easyPhotoshopArtLayer
     Private copyrightEasyArtLayer As New easyPhotoshopArtLayer
+    Private mockUpTemplateEasyArtLayer As New easyPhotoshopArtLayer
 
     'PUBLIC ROUTINES=======================================================
 
@@ -135,7 +140,6 @@ Public Class Form1
 
                         Try
 
-                            'UPDATE PROGRESS FORM**************************
                             progressForm.SetCurrentTaskText("Linking to Photoshop COM")
 
                             psApp = CreateObject("Photoshop.Application") 'start photoshop
@@ -154,7 +158,6 @@ Public Class Form1
 
                             End If
 
-                            'UPDATE PROGRESS FORM**************************
                             progressForm.IncrementProgressBar(1)
 
                         Catch ex As Exception
@@ -166,16 +169,12 @@ Public Class Form1
 
                         End Try
 
-                        'UPDATE PROGRESS FORM**************************
                         progressForm.SetCurrentTaskText("Setting temporary preferences")
 
                         Dim previousUnitPreference As Photoshop.PsUnits = psApp.Preferences.RulerUnits
                         psApp.Preferences.RulerUnits = Photoshop.PsUnits.psPixels
 
-                        'UPDATE PROGRESS FORM**************************
                         progressForm.IncrementProgressBar(1)
-
-                        'UPDATE PROGRESS FORM**************************
                         progressForm.SetCurrentTaskText("Processing art file")
 
                         If Path.GetExtension(artFilePath) = ".ai" Then 'if illustrator file selected
@@ -226,18 +225,16 @@ Public Class Form1
 
                         End If
 
-                        'UPDATE PROGRESS FORM**************************
                         progressForm.IncrementProgressBar(1)
 
-                        Dim overlayFilePath As String = AppContext.BaseDirectory + MOCK_UP_TEMPLATES_DIRECTORY + "\overlay.psd"
-                        Dim overlayDoc As Document = psApp.Open(overlayFilePath)
-
-                        'UPDATE PROGRESS FORM**************************
                         progressForm.SetCurrentTaskText("Open templates")
 
                         For curColorIndex As Integer = 0 To selectedColors.Count - 1 'loop through each color
 
-                            My.Application.DoEvents() 'give events a chance to catch up
+                            overlayFilePath = AppContext.BaseDirectory + MOCK_UP_TEMPLATES_DIRECTORY + "\overlay.psd"
+                            overlayDoc = psApp.Open(overlayFilePath)
+
+                            'BUG: CRASHING ON SECOND COLOR
 
                             Dim curColor As colorSelector = selectedColors.Item(curColorIndex)
 
@@ -245,23 +242,21 @@ Public Class Form1
                             Dim curTemplateFilePath As String = ""
                             If SmoothRadBtn.Checked = True Then
 
-                                curTemplateFilePath = BACKGROUND_TEMPLATES_DIRECTORY + "\smooth_template.psd"
+                                curTemplateFilePath = BACKGROUND_TEMPLATES_DIRECTORY + "\smooth_mug_template.psd"
 
                             ElseIf roughRadBtn.Checked = True Then
 
-                                curTemplateFilePath = BACKGROUND_TEMPLATES_DIRECTORY + "\rough_template.psd"
+                                curTemplateFilePath = BACKGROUND_TEMPLATES_DIRECTORY + "\rough_mug_template.psd"
 
                             End If
 
                             Dim curMugTemplateDoc As Document = psApp.Open(AppContext.BaseDirectory + "\" + curTemplateFilePath) 'open template for current mug color
 
-                            'UPDATE PROGRESS FORM**************************
                             progressForm.IncrementProgressBar(1)
 
                             'MUG TEMPLATE SECTION**************************************************************************
                             '**********************************************************************************************
 
-                            'UPDATE PROGRESS FORM**************************
                             progressForm.SetCurrentTaskText("Processing current color template")
 
                             psApp.ActiveDocument = artFileDoc
@@ -271,10 +266,9 @@ Public Class Form1
                             psApp.ActiveDocument = curMugTemplateDoc
 
                             proofEasyArtLayer.SetArtLayer(curMugTemplateDoc.ArtLayers.Item("Layer 1"))
-
                             printEasyArtLayer.SetArtLayer(curMugTemplateDoc.ArtLayers.Item("Layer 2"))
 
-                            ChangeTemplateBackgroundColor(curMugTemplateDoc, proofEasyArtLayer.GetArtLayer(), printEasyArtLayer.GetArtLayer(), curColor.GetColorName())
+                            ChangeBackgroundTemplateBackgroundColor(curMugTemplateDoc, proofEasyArtLayer.GetArtLayer(), printEasyArtLayer.GetArtLayer(), curColor.GetColorName())
 
                             curMugTemplateDoc.ActiveLayer = proofEasyArtLayer.GetArtLayer()
 
@@ -330,10 +324,7 @@ Public Class Form1
 
                             End If
 
-                            'UPDATE PROGRESS FORM**************************
                             progressForm.IncrementProgressBar(1)
-
-                            'UPDATE PROGRESS FORM**************************
                             progressForm.SetCurrentTaskText("Saving TO PRINT file")
 
                             Try
@@ -357,10 +348,7 @@ Public Class Form1
 
                             End Try
 
-                            'UPDATE PROGRESS FORM**************************
                             progressForm.IncrementProgressBar(1)
-
-                            'UPDATE PROGRESS FORM**************************
                             progressForm.SetCurrentTaskText("Saving MUG file")
 
                             Try
@@ -380,7 +368,6 @@ Public Class Form1
                             Dim psdFileName As String = saveFolderPath + "\" + artFileNameNoEx + "_" + curColor.GetColorName() + "_MUG.psd"
                             curMugTemplateDoc.SaveAs(psdFileName)
 
-                            'UPDATE PROGRESS FORM**************************
                             progressForm.IncrementProgressBar(1)
 
                             curMugTemplateDoc.Close(PsSaveOptions.psDoNotSaveChanges) 'close current mug template
@@ -391,24 +378,25 @@ Public Class Form1
                             'MOCK UP SECTION*******************************************************************************
                             '**********************************************************************************************
 
-                            'UPDATE PROGRESS FORM**************************
                             progressForm.SetCurrentTaskText("Processing current color mock up")
 
                             'figure out current template name and assign it to curMockUpTemplatePath
                             Dim curMockUpTemplateFilePath As String = ""
                             If SmoothRadBtn.Checked = True Then
 
-                                curMockUpTemplateFilePath = MOCK_UP_TEMPLATES_DIRECTORY + "\smooth_template.psd"
+                                curMockUpTemplateFilePath = MOCK_UP_TEMPLATES_DIRECTORY + "\smooth_mockup_template.psd"
 
                             ElseIf roughRadBtn.Checked = True Then
 
-                                curMockUpTemplateFilePath = MOCK_UP_TEMPLATES_DIRECTORY + "\rough_template.psd"
+                                curMockUpTemplateFilePath = MOCK_UP_TEMPLATES_DIRECTORY + "\rough_mockup_template.psd"
 
                             End If
 
-                            My.Application.DoEvents() 'give events a chance to catch up
-
                             Dim curMockUpDoc As Document = psApp.Open(AppContext.BaseDirectory + curMockUpTemplateFilePath) 'open mock up template for current mug color
+
+                            mockupBaseEasyArtLayer.SetArtLayer(curMockUpDoc.ArtLayers.Item("Layer 1"))
+
+                            ChangeMockUpTemplateBackgroundColor(curMockUpDoc, mockupBaseEasyArtLayer.GetArtLayer(), curColor.GetColorName())
 
                             If twoImageRadBtn.Checked Then
 
@@ -461,8 +449,6 @@ Public Class Form1
 
                             End If
 
-                            My.Application.DoEvents() 'give events a chance to catch up
-
                             'add shading overlay
                             psApp.ActiveDocument = overlayDoc
                             overlayEasyArtLayer.SetArtLayer(overlayDoc.ArtLayers.Item("Layer 1"))
@@ -477,10 +463,7 @@ Public Class Form1
                             mockupRightEasyArtLayer.SetName(RIGHT_ARTWORK_LAYER_NAME)
                             overlayEasyArtLayer.SetName(OVERLAY_LAYER_NAME)
 
-                            'UPDATE PROGRESS FORM**************************
                             progressForm.IncrementProgressBar(1)
-
-                            'UPDATE PROGRESS FORM**************************
                             progressForm.SetCurrentTaskText("Saving ON MUG jpg")
 
                             Try
@@ -503,20 +486,15 @@ Public Class Form1
                             End Try
 
 
-                            'UPDATE PROGRESS FORM**************************
                             progressForm.IncrementProgressBar(1)
-
-                            'UPDATE PROGRESS FORM**************************
                             progressForm.SetCurrentTaskText("Saving ON MUG psd")
 
                             'save '_ON_MUG' mock up psd
                             psdFileName = saveFolderPath + "\" + artFileNameNoEx + "_" + curColor.GetColorName() + "_ON_MUG.psd"
                             curMockUpDoc.SaveAs(psdFileName)
-
-                            'UPDATE PROGRESS FORM**************************
+                            curMockUpDoc.Close(PsSaveOptions.psDoNotSaveChanges)
                             progressForm.IncrementProgressBar(1)
 
-                            curMockUpDoc.Close(PsSaveOptions.psDoNotSaveChanges)
 
                             'End Of MOCK UP SECTION************************************************************************
                             '**********************************************************************************************
@@ -525,7 +503,7 @@ Public Class Form1
 
                         psApp.Preferences.RulerUnits = previousUnitPreference 'restore previous ruler units preference
 
-                        'Close any open documents
+                        'Close last of open documents
                         artFileDoc.Close(PsSaveOptions.psDoNotSaveChanges)
                         overlayDoc.Close(PsSaveOptions.psDoNotSaveChanges)
 
@@ -574,7 +552,10 @@ Public Class Form1
 
     End Sub
 
-    Private Sub ChangeTemplateBackgroundColor(ByRef doc As Document, ByRef proofLayer As ArtLayer, ByRef printLayer As ArtLayer, ByVal colorName As String)
+    Private Sub ChangeBackgroundTemplateBackgroundColor(ByRef doc As Document, ByRef proofLayer As ArtLayer, ByRef printLayer As ArtLayer, ByVal colorName As String)
+
+        Dim previouslyActiveDoc As Document = psApp.ActiveDocument
+        Dim previouslyActiveLayer As ArtLayer = psApp.ActiveDocument.ActiveLayer
 
         Dim mugColorsSampler As New mugColorsSampler_class
 
@@ -599,14 +580,46 @@ Public Class Form1
         proofLayer.Visible = True
         doc.ActiveLayer = proofLayer
 
+        psApp.ActiveDocument = previouslyActiveDoc
+        previouslyActiveDoc.ActiveLayer = previouslyActiveLayer
+
     End Sub
 
-    Private Sub MakeSelection(ByRef doc As Document, ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer)
+    Private Sub ChangeMockUpTemplateBackgroundColor(ByRef doc As Document, ByRef templateLayer As ArtLayer, ByVal colorName As String)
 
-        Dim psArray1() As Object = {x, y}
-        Dim psArray2() As Object = {w, y}
-        Dim psArray3() As Object = {x, h}
-        Dim psArray4() As Object = {x, h}
+        Dim previouslyActiveDoc As Document = psApp.ActiveDocument
+        Dim previouslyActiveLayer As ArtLayer = psApp.ActiveDocument.ActiveLayer
+
+        Dim mugColorsSampler As New mugColorsSampler_class
+
+        Dim newColor As RGBColor = mugColorsSampler.GetRGBColorFromShirtColors_NEWFile(psApp, colorName + "_proof", True)
+
+        psApp.ActiveDocument = doc
+
+        'left mug
+        doc.ActiveLayer = templateLayer
+        MakeSelection(doc, 700, 500, 1000, 800)
+        doc.Selection.Grow(10, True)
+        doc.Selection.Fill(newColor)
+        doc.Selection.Deselect()
+
+        'right mug
+        MakeSelection(doc, 2000, 500, 2300, 800)
+        doc.Selection.Grow(10, True)
+        doc.Selection.Fill(newColor)
+        doc.Selection.Deselect()
+
+        psApp.ActiveDocument = previouslyActiveDoc
+        previouslyActiveDoc.ActiveLayer = previouslyActiveLayer
+
+    End Sub
+
+    Private Sub MakeSelection(ByRef doc As Document, ByVal left As Integer, ByVal top As Integer, ByVal right As Integer, ByVal bottom As Integer)
+
+        Dim psArray1() As Object = {right, bottom}
+        Dim psArray2() As Object = {left, bottom}
+        Dim psArray3() As Object = {left, top}
+        Dim psArray4() As Object = {right, top}
 
         Dim psArray() As Object = {psArray1, psArray2, psArray3, psArray4}
 
