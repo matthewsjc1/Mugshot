@@ -566,15 +566,15 @@ Public Class Form1
 
         doc.ActiveLayer = proofLayer
         MakeSelection(doc, 500, 500, 100, 100)
-        doc.Selection.Grow(10, True)
-        doc.Selection.Fill(proofColor)
+        doc.Selection.Grow(15, True)
+        doc.Selection.Fill(proofColor,, 100)
         doc.Selection.Deselect()
         proofLayer.Visible = False
 
         doc.ActiveLayer = printLayer
         MakeSelection(doc, 500, 500, 100, 100)
-        doc.Selection.Grow(10, True)
-        doc.Selection.Fill(printColor)
+        doc.Selection.Grow(15, True)
+        doc.Selection.Fill(printColor,, 100)
         doc.Selection.Deselect()
 
         proofLayer.Visible = True
@@ -599,14 +599,14 @@ Public Class Form1
         'left mug
         doc.ActiveLayer = templateLayer
         MakeSelection(doc, 700, 500, 1000, 800)
-        doc.Selection.Grow(10, True)
-        doc.Selection.Fill(newColor)
+        doc.Selection.Grow(15, True)
+        doc.Selection.Fill(newColor,, 100)
         doc.Selection.Deselect()
 
         'right mug
         MakeSelection(doc, 2000, 500, 2300, 800)
-        doc.Selection.Grow(10, True)
-        doc.Selection.Fill(newColor)
+        doc.Selection.Grow(15, True)
+        doc.Selection.Fill(newColor,, 100)
         doc.Selection.Deselect()
 
         psApp.ActiveDocument = previouslyActiveDoc
