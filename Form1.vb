@@ -218,8 +218,7 @@ Public Class Form1
                                 WriteErrorLog("couldn't process .psd file - " + artFilePath)
 
                                 MessageBox.Show("For some reason Mugshot doesn't like this Photoshop file." + vbCrLf + vbCrLf +
-                                                "Email jmatthews@earthsunmoon.com for further assistance." + vbCrLf +
-                                                "Please mention this error and include a link to the Photoshop file you selected.", "Issue with Photoshop File")
+                                                "Email jmatthews@earthsunmoon.com for further assistance.", "Issue with Photoshop File")
 
                             End Try
 
@@ -233,8 +232,6 @@ Public Class Form1
 
                             overlayFilePath = AppContext.BaseDirectory + MOCK_UP_TEMPLATES_DIRECTORY + "\overlay.psd"
                             overlayDoc = psApp.Open(overlayFilePath)
-
-                            'BUG: CRASHING ON SECOND COLOR
 
                             Dim curColor As colorSelector = selectedColors.Item(curColorIndex)
 
@@ -475,7 +472,7 @@ Public Class Form1
                                 jpgOptions.EmbedColorProfile = True
                                 curMockUpDoc.SaveAs(psdFileName, jpgOptions)
 
-                                WriteSuccessfulRunRecordToUsageRecords()
+                                WriteSuccessfulRunRecordToUsageRecords(artFilePath)
 
                             Catch ex As Exception
 
@@ -634,7 +631,13 @@ Public Class Form1
             Try
 
                 Dim curDateTime As String = DateTime.Now.ToString("yyyy-M-d @ H_m")
-                File.Create("\\ARTSERVER\Working_Files\Jared\CUSTOM SOFTWARE\MUGSHOT\USAGE_RECORDS\" + "App Opened - " + curDateTime + ".ur")
+                Dim recordFilePath As String = "\\ARTSERVER\Working_Files\Jared\CUSTOM SOFTWARE\MUGSHOT\USAGE_RECORDS\" + "App Opened - " + curDateTime + ".ur"
+                Dim recordFile As New StreamWriter(recordFilePath)
+
+                recordFile.WriteLine(My.Computer.Name)
+                recordFile.WriteLine(My.Computer.Info)
+
+                recordFile.Close()
 
             Catch ex As Exception
 
@@ -644,7 +647,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub WriteSuccessfulRunRecordToUsageRecords()
+    Private Sub WriteSuccessfulRunRecordToUsageRecords(ByVal templateFilePath As String)
 
         If My.Computer.Name = "ART-AB" = False Then 'don't make records for my work pc (avoid contaminating actual usage records)
 
@@ -654,6 +657,9 @@ Public Class Form1
                 Dim usageFile As New StreamWriter("\\ARTSERVER\Working_Files\Jared\CUSTOM SOFTWARE\MUGSHOT\USAGE_RECORDS\" + "Template Made - " + curDateTime + ".ur")
 
                 usageFile.WriteLine("ran in silent mode = " + hidePhotoshopCheckbox.Checked.ToString) 'was run in silent mode
+                usageFile.WriteLine("template file path: " + templateFilePath)
+                usageFile.WriteLine(My.Computer.Name)
+                usageFile.WriteLine(My.Computer.Info)
 
                 usageFile.Close()
 
