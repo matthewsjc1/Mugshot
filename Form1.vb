@@ -634,9 +634,6 @@ Public Class Form1
                 Dim recordFilePath As String = "\\ARTSERVER\Working_Files\Jared\CUSTOM SOFTWARE\MUGSHOT\USAGE_RECORDS\" + "App Opened - " + curDateTime + ".ur"
                 Dim recordFile As New StreamWriter(recordFilePath)
 
-                recordFile.WriteLine(My.Computer.Name)
-                recordFile.WriteLine(My.Computer.Info)
-
                 recordFile.Close()
 
             Catch ex As Exception
@@ -658,8 +655,6 @@ Public Class Form1
 
                 usageFile.WriteLine("ran in silent mode = " + hidePhotoshopCheckbox.Checked.ToString) 'was run in silent mode
                 usageFile.WriteLine("template file path: " + templateFilePath)
-                usageFile.WriteLine(My.Computer.Name)
-                usageFile.WriteLine(My.Computer.Info)
 
                 usageFile.Close()
 
