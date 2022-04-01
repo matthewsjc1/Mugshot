@@ -85,32 +85,6 @@ Public Class Form1
 
     'PRIVATE ROUTINES=======================================================
 
-    Private Sub Form1_Shown(sender As Object, e As EventArgs) Handles Me.Shown
-
-        Dim updateClient As New autoUpdateClient
-
-        Try
-
-            updateClient.StartAutoUpdater()
-
-        Catch ex As Exception
-
-            WriteErrorLog("unable to start auto-updater")
-
-        End Try
-
-        Try
-
-            updateClient.WaitForClientMessage()
-
-        Catch ex As Exception
-
-            WriteErrorLog("problem waiting for client message")
-
-        End Try
-
-    End Sub
-
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         WriteAppOpenedRecordToUsageRecords()
