@@ -536,14 +536,14 @@ Public Class Form1
         psApp.ActiveDocument = doc
 
         doc.ActiveLayer = proofLayer
-        MakeSelection(doc, 500, 500, 100, 100)
+        MakeSelection(doc, 1500, 500, 1600, 100)
         doc.Selection.Grow(15, True)
         doc.Selection.Fill(proofColor,, 100)
         doc.Selection.Deselect()
         proofLayer.Visible = False
 
         doc.ActiveLayer = printLayer
-        MakeSelection(doc, 500, 500, 100, 100)
+        MakeSelection(doc, 1500, 500, 1600, 100)
         doc.Selection.Grow(15, True)
         doc.Selection.Fill(printColor,, 100)
         doc.Selection.Deselect()
