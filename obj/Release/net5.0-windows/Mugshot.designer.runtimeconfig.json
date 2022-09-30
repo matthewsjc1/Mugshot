@@ -7,10 +7,10 @@
     },
     "additionalProbingPaths": [
       "C:\\Users\\jaredm\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\jaredm\\.nuget\\packages",
-      "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet"
+      "C:\\Users\\jaredm\\.nuget\\packages"
     ],
     "configProperties": {
+      "System.Reflection.Metadata.MetadataUpdater.IsSupported": false,
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true
     }
   }

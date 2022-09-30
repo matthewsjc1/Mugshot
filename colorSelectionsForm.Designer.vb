@@ -81,6 +81,7 @@ Partial Class colorSelectionsForm
         Me.colorPixBox56 = New System.Windows.Forms.PictureBox()
         Me.colorPixBox50 = New System.Windows.Forms.PictureBox()
         Me.doneBtn = New System.Windows.Forms.Button()
+        Me.colorPixBox57 = New System.Windows.Forms.PictureBox()
         CType(Me.colorPixBox0, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.colorPixBox8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.colorPixBox7, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -138,6 +139,7 @@ Partial Class colorSelectionsForm
         CType(Me.colorPixBox55, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.colorPixBox56, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.colorPixBox50, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.colorPixBox57, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'colorPixBox0
@@ -719,6 +721,16 @@ Partial Class colorSelectionsForm
         Me.doneBtn.Text = "Done"
         Me.doneBtn.UseVisualStyleBackColor = True
         '
+        'colorPixBox57
+        '
+        Me.colorPixBox57.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.colorPixBox57.Image = CType(resources.GetObject("colorPixBox57.Image"), System.Drawing.Image)
+        Me.colorPixBox57.Location = New System.Drawing.Point(635, 407)
+        Me.colorPixBox57.Name = "colorPixBox57"
+        Me.colorPixBox57.Size = New System.Drawing.Size(98, 64)
+        Me.colorPixBox57.TabIndex = 79
+        Me.colorPixBox57.TabStop = False
+        '
         'colorSelectionsForm
         '
         Me.AcceptButton = Me.doneBtn
@@ -726,6 +738,7 @@ Partial Class colorSelectionsForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(745, 735)
         Me.ControlBox = False
+        Me.Controls.Add(Me.colorPixBox57)
         Me.Controls.Add(Me.doneBtn)
         Me.Controls.Add(Me.colorPixBox51)
         Me.Controls.Add(Me.colorPixBox52)
@@ -848,6 +861,7 @@ Partial Class colorSelectionsForm
         CType(Me.colorPixBox55, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.colorPixBox56, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.colorPixBox50, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.colorPixBox57, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -909,4 +923,5 @@ Partial Class colorSelectionsForm
     Friend WithEvents colorPixBox56 As PictureBox
     Friend WithEvents colorPixBox50 As PictureBox
     Friend WithEvents doneBtn As Button
+    Friend WithEvents colorPixBox57 As PictureBox
 End Class

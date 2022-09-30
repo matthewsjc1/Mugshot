@@ -3,7 +3,7 @@ Imports Photoshop
 
 Public Class colorSelectionsForm
 
-    Private Const NUMBER_OF_AVAILABLE_COLORS As Integer = 57
+    Private Const NUMBER_OF_AVAILABLE_COLORS As Integer = 58
 
     Private colors As New ArrayList()
     Private haveColorsBeenInitialized As Boolean = False
@@ -112,6 +112,7 @@ Public Class colorSelectionsForm
         SetUpColorSelector(54, "texas_orange", colorPixBox54) ', 181, 83, 16, 213, 128, 48)
         SetUpColorSelector(55, "antique_orange", colorPixBox55) ', 179, 54, 11, 206, 74, 27)
         SetUpColorSelector(56, "antique_cherry", colorPixBox56) ', 122, 25, 27, 109, 3, 3)
+        SetUpColorSelector(57, "black", colorPixBox57)
 
     End Sub
 
@@ -509,6 +510,13 @@ Public Class colorSelectionsForm
     Private Sub colorPixBox56_Click_1(sender As Object, e As EventArgs) Handles colorPixBox56.Click
 
         Dim box As colorSelector = colors.Item(56)
+        box.ToggleSelectState()
+
+    End Sub
+
+    Private Sub colorPixBox57_Click(sender As Object, e As EventArgs) Handles colorPixBox57.Click
+
+        Dim box As colorSelector = colors.Item(57)
         box.ToggleSelectState()
 
     End Sub

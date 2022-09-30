@@ -22,7 +22,6 @@ C:\Users\jaredm\Desktop\Programming Projects\GIT REPOS\Mugshot\bin\Release\net5.
 C:\Users\jaredm\Desktop\Programming Projects\GIT REPOS\Mugshot\bin\Release\net5.0-windows\Mugshot.runtimeconfig.json
 C:\Users\jaredm\Desktop\Programming Projects\GIT REPOS\Mugshot\bin\Release\net5.0-windows\Mugshot.runtimeconfig.dev.json
 C:\Users\jaredm\Desktop\Programming Projects\GIT REPOS\Mugshot\bin\Release\net5.0-windows\Mugshot.dll
-C:\Users\jaredm\Desktop\Programming Projects\GIT REPOS\Mugshot\bin\Release\net5.0-windows\ref\Mugshot.dll
 C:\Users\jaredm\Desktop\Programming Projects\GIT REPOS\Mugshot\bin\Release\net5.0-windows\Mugshot.pdb
 C:\Users\jaredm\Desktop\Programming Projects\GIT REPOS\Mugshot\obj\Release\net5.0-windows\Mugshot.vbproj.AssemblyReference.cache
 C:\Users\jaredm\Desktop\Programming Projects\GIT REPOS\Mugshot\obj\Release\net5.0-windows\Interop.Photoshop.dll
@@ -44,3 +43,4 @@ E:\matthewsjc1 github repos\Mugshot\obj\Release\net5.0-windows\Mugshot.vbproj.Re
 E:\matthewsjc1 github repos\Mugshot\obj\Release\net5.0-windows\Mugshot.Form1.resources
 C:\Users\jaredm\Desktop\Programming Projects\GIT REPOS\Mugshot\obj\Release\net5.0-windows\Mugshot.progressForm.resources
 E:\matthewsjc1 github repos\Mugshot\obj\Release\net5.0-windows\Mugshot.progressForm.resources
+C:\Users\jaredm\Desktop\Programming Projects\GIT REPOS\Mugshot\obj\Release\net5.0-windows\refint\Mugshot.dll

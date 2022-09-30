@@ -234,6 +234,10 @@ Public Class mugColorsSampler_class
     Private Const ORANGE_PRINT_Y As Double = 1927.0
     Private Const ORANGE_PROOF_X As Double = 3566.0
     Private Const ORANGE_PROOF_Y As Double = 1927.0
+    Private Const BLACK_PRINT_X As Double = 3560.0
+    Private Const BLACK_PRINT_Y As Double = 2200.0
+    Private Const BLACK_PROOF_X As Double = 3340.0
+    Private Const BLACK_PROOF_Y As Double = 2200.0
 
     'PUBLIC METHODS****************************************************************************************************
 
@@ -739,6 +743,14 @@ Public Class mugColorsSampler_class
 
                 xPos = ORANGE_PROOF_X
 
+            Case "black_print"
+
+                xPos = BLACK_PRINT_X
+
+            Case "black_proof"
+
+                xPos = BLACK_PROOF_X
+
             Case Else
 
                 xPos = -1
@@ -1218,6 +1230,14 @@ Public Class mugColorsSampler_class
             Case "orange_proof"
 
                 yPos = ORANGE_PROOF_Y
+
+            Case "black_print"
+
+                yPos = BLACK_PRINT_Y
+
+            Case "black_proof"
+
+                yPos = BLACK_PROOF_Y
 
             Case Else
 
