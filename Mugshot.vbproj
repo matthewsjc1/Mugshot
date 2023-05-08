@@ -20,6 +20,12 @@
       <Isolated>false</Isolated>
       <EmbedInteropTypes>true</EmbedInteropTypes>
     </COMReference>
+    <COMReference Include="{4b0ab3e1-80f1-11cf-86b4-444553540000}">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>4b0ab3e1-80f1-11cf-86b4-444553540000</Guid>
+    </COMReference>
   </ItemGroup>
 
   <ItemGroup>
