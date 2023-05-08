@@ -2,242 +2,302 @@
 
 Public Class mugColorsSampler_class
 
-    Private Const HEATHER_NAVY_PROOF_X As Double = 163.0
-    Private Const HEATHER_NAVY_PROOF_Y As Double = 210.0
-    Private Const HEATHER_NAVY_PRINT_X As Double = 383.0
-    Private Const HEATHER_NAVY_PRINT_Y As Double = 210.0
-    Private Const DARK_HEATHER_PROOF_X As Double = 171.0
-    Private Const DARK_HEATHER_PROOF_Y As Double = 514.0
-    Private Const DARK_HEATHER_PRINT_X As Double = 367.0
-    Private Const DARK_HEATHER_PRINT_Y As Double = 502.0
-    Private Const HEATHER_INDIGO_PROOF_X As Double = 171.0
-    Private Const HEATHER_INDIGO_PROOF_Y As Double = 802.0
-    Private Const HEATHER_INDIGO_PRINT_X As Double = 375.0
-    Private Const HEATHER_INDIGO_PRINT_Y As Double = 786.0
-    Private Const STONE_BLUE_PROOF_X As Double = 155.0
-    Private Const STONE_BLUE_PROOF_Y As Double = 1066.0
-    Private Const STONE_BLUE_PRINT_X As Double = 383.0
-    Private Const STONE_BLUE_PRINT_Y As Double = 1058.0
-    Private Const NAVY_BLUE_PROOF_X As Double = 171.0
-    Private Const NAVY_BLUE_PROOF_Y As Double = 1358.0
-    Private Const NAVY_BLUE_PRINT_X As Double = 395.0
-    Private Const NAVY_BLUE_PRINT_Y As Double = 1350.0
-    Private Const AQUATIC_BLUE_PROOF_X As Double = 147.0
-    Private Const AQUATIC_BLUE_PROOF_Y As Double = 1594.0
-    Private Const AQUATIC_BLUE_PRINT_X As Double = 371.0
-    Private Const AQUATIC_BLUE_PRINT_Y As Double = 1606.0
-    Private Const INDIGO_BLUE_PROOF_X As Double = 131.0
-    Private Const INDIGO_BLUE_PROOF_Y As Double = 1906.0
-    Private Const INDIGO_BLUE_PRINT_X As Double = 387.0
-    Private Const INDIGO_BLUE_PRINT_Y As Double = 1882.0
-    Private Const CAROLINA_BLUE_PROOF_X As Double = 143.0
-    Private Const CAROLINA_BLUE_PROOF_Y As Double = 2190.0
-    Private Const CAROLINA_BLUE_PRINT_X As Double = 399.0
-    Private Const CAROLINA_BLUE_PRINT_Y As Double = 2198.0
-    Private Const IRIS_PROOF_X As Double = 143.0
-    Private Const IRIS_PROOF_Y As Double = 2482.0
-    Private Const IRIS_PRINT_X As Double = 395.0
-    Private Const IRIS_PRINT_Y As Double = 2458.0
-    Private Const VIOLET_PROOF_X As Double = 171.0
-    Private Const VIOLET_PROOF_Y As Double = 2734.0
-    Private Const VIOLET_PRINT_X As Double = 399.0
-    Private Const VIOLET_PRINT_Y As Double = 2730.0
-    Private Const LT_BLUE_PROOF_X As Double = 139.0
-    Private Const LT_BLUE_PROOF_Y As Double = 2994.0
-    Private Const LT_BLUE_PRINT_X As Double = 395.0
-    Private Const LT_BLUE_PRINT_Y As Double = 3002.0
-    Private Const HEATHER_MILITARY_PROOF_X As Double = 779.0
-    Private Const HEATHER_MILITARY_PROOF_Y As Double = 202.0
-    Private Const HEATHER_MILITARY_PRINT_X As Double = 1019.0
-    Private Const HEATHER_MILITARY_PRINT_Y As Double = 214.0
-    Private Const STONEWASHED_GREEN_PROOF_X As Double = 779.0
-    Private Const STONEWASHED_GREEN_PROOF_Y As Double = 498.0
-    Private Const STONEWASHED_GREEN_PRINT_X As Double = 1015.0
-    Private Const STONEWASHED_GREEN_PRINT_Y As Double = 498.0
-    Private Const MILITARY_GREEN_PROOF_X As Double = 787.0
-    Private Const MILITARY_GREEN_PROOF_Y As Double = 798.0
-    Private Const MILITARY_GREEN_PRINT_X As Double = 1003.0
-    Private Const MILITARY_GREEN_PRINT_Y As Double = 794.0
-    Private Const FOREST_GREEN_PROOF_X As Double = 767.0
-    Private Const FOREST_GREEN_PROOF_Y As Double = 1082.0
-    Private Const FOREST_GREEN_PRINT_X As Double = 1023.0
-    Private Const FOREST_GREEN_PRINT_Y As Double = 1070.0
-    Private Const PISTACHIO_PROOF_X As Double = 759.0
-    Private Const PISTACHIO_PROOF_Y As Double = 1322.0
-    Private Const PISTACHIO_PRINT_X As Double = 995.0
-    Private Const PISTACHIO_PRINT_Y As Double = 1338.0
-    Private Const ROYAL_BLUE_PROOF_X As Double = 759.0
-    Private Const ROYAL_BLUE_PROOF_Y As Double = 1602.0
-    Private Const ROYAL_BLUE_PRINT_X As Double = 1003.0
-    Private Const ROYAL_BLUE_PRINT_Y As Double = 1602.0
-    Private Const PURPLE_PROOF_X As Double = 783.0
-    Private Const PURPLE_PROOF_Y As Double = 1882.0
-    Private Const PURPLE_PRINT_X As Double = 999.0
-    Private Const PURPLE_PRINT_Y As Double = 1914.0
-    Private Const JADE_DOME_PROOF_X As Double = 783.0
-    Private Const JADE_DOME_PROOF_Y As Double = 2190.0
-    Private Const JADE_DOME_PRINT_X As Double = 995.0
-    Private Const JADE_DOME_PRINT_Y As Double = 2202.0
-    Private Const COBALT_PROOF_X As Double = 767.0
-    Private Const COBALT_PROOF_Y As Double = 2478.0
-    Private Const COBALT_PRINT_X As Double = 991.0
-    Private Const COBALT_PRINT_Y As Double = 2494.0
-    Private Const SAPPHIRE_PROOF_X As Double = 755.0
-    Private Const SAPPHIRE_PROOF_Y As Double = 2766.0
-    Private Const SAPPHIRE_PRINT_X As Double = 995.0
-    Private Const SAPPHIRE_PRINT_Y As Double = 2742.0
-    Private Const BLUE_DUSK_PROOF_X As Double = 775.0
-    Private Const BLUE_DUSK_PROOF_Y As Double = 3030.0
-    Private Const BLUE_DUSK_PRINT_X As Double = 1007.0
-    Private Const BLUE_DUSK_PRINT_Y As Double = 3030.0
-    Private Const CARDINAL_RED_PROOF_X As Double = 1399.0
-    Private Const CARDINAL_RED_PROOF_Y As Double = 270.0
-    Private Const CARDINAL_RED_PRINT_X As Double = 1631.0
-    Private Const CARDINAL_RED_PRINT_Y As Double = 214.0
-    Private Const RED_PROOF_X As Double = 1403.0
-    Private Const RED_PROOF_Y As Double = 502.0
-    Private Const RED_PRINT_X As Double = 1659.0
-    Private Const RED_PRINT_Y As Double = 490.0
-    Private Const HEATHER_RED_PROOF_X As Double = 1427.0
-    Private Const HEATHER_RED_PROOF_Y As Double = 782.0
-    Private Const HEATHER_RED_PRINT_X As Double = 1635.0
-    Private Const HEATHER_RED_PRINT_Y As Double = 786.0
-    Private Const HEATHER_CARDINAL_PROOF_X As Double = 1439.0
-    Private Const HEATHER_CARDINAL_PROOF_Y As Double = 1078.0
-    Private Const HEATHER_CARDINAL_PRINT_X As Double = 1635.0
-    Private Const HEATHER_CARDINAL_PRINT_Y As Double = 1098.0
-    Private Const HELICONIA_PROOF_X As Double = 1383.0
-    Private Const HELICONIA_PROOF_Y As Double = 1346.0
-    Private Const HELICONIA_PRINT_X As Double = 1383.0
-    Private Const HELICONIA_PRINT_Y As Double = 1346.0
-    Private Const LT_PINK_PROOF_X As Double = 1423.0
-    Private Const LT_PINK_PROOF_Y As Double = 1606.0
-    Private Const LT_PINK_PRINT_X As Double = 1423.0
-    Private Const LT_PINK_PRINT_Y As Double = 1606.0
-    Private Const LAVENDER_PROOF_X As Double = 1399.0
-    Private Const LAVENDER_PROOF_Y As Double = 1902.0
-    Private Const LAVENDER_PRINT_X As Double = 1631.0
-    Private Const LAVENDER_PRINT_Y As Double = 1886.0
-    Private Const ORCHID_PROOF_X As Double = 1339.0
-    Private Const ORCHID_PROOF_Y As Double = 2166.0
-    Private Const ORCHID_PRINT_X As Double = 1659.0
-    Private Const ORCHID_PRINT_Y As Double = 2190.0
-    Private Const GARNET_PROOF_X As Double = 1411.0
-    Private Const GARNET_PROOF_Y As Double = 2478.0
-    Private Const GARNET_PRINT_X As Double = 1655.0
-    Private Const GARNET_PRINT_Y As Double = 2490.0
-    Private Const MAROON_PROOF_X As Double = 1415.0
-    Private Const MAROON_PROOF_Y As Double = 2722.0
-    Private Const MAROON_PRINT_X As Double = 1631.0
-    Private Const MAROON_PRINT_Y As Double = 2742.0
-    Private Const METRO_BLUE_PROOF_X As Double = 1439.0
-    Private Const METRO_BLUE_PROOF_Y As Double = 3010.0
-    Private Const METRO_BLUE_PRINT_X As Double = 1623.0
-    Private Const METRO_BLUE_PRINT_Y As Double = 3026.0
-    Private Const SANDY_PROOF_X As Double = 2063.0
-    Private Const SANDY_PROOF_Y As Double = 230.0
-    Private Const SANDY_PRINT_X As Double = 2294.0
-    Private Const SANDY_PRINT_Y As Double = 214.0
-    Private Const PRAIRIE_DUST_PROOF_X As Double = 2063.0
-    Private Const PRAIRIE_DUST_PROOF_Y As Double = 482.0
-    Private Const PRAIRIE_DUST_PRINT_X As Double = 2282.0
-    Private Const PRAIRIE_DUST_PRINT_Y As Double = 486.0
-    Private Const NATURAL_PROOF_X As Double = 2079.0
-    Private Const NATURAL_PROOF_Y As Double = 786.0
-    Private Const NATURAL_PRINT_X As Double = 2290.0
-    Private Const NATURAL_PRINT_Y As Double = 762.0
-    Private Const DARK_CHOCOLATE_PROOF_X As Double = 2071.0
-    Private Const DARK_CHOCOLATE_PROOF_Y As Double = 1090.0
-    Private Const DARK_CHOCOLATE_PRINT_X As Double = 2278.0
-    Private Const DARK_CHOCOLATE_PRINT_Y As Double = 1110.0
-    Private Const SAND_PROOF_X As Double = 2043.0
-    Private Const SAND_PROOF_Y As Double = 1334.0
-    Private Const SAND_PRINT_X As Double = 2302.0
-    Private Const SAND_PRINT_Y As Double = 1330.0
-    Private Const BROWN_SAVANA_PROOF_X As Double = 2087.0
-    Private Const BROWN_SAVANA_PROOF_Y As Double = 1610.0
-    Private Const BROWN_SAVANA_PRINT_X As Double = 2278.0
-    Private Const BROWN_SAVANA_PRINT_Y As Double = 1626.0
-    Private Const CHESTNUT_PROOF_X As Double = 2107.0
-    Private Const CHESTNUT_PROOF_Y As Double = 1898.0
-    Private Const CHESTNUT_PRINT_X As Double = 2326.0
-    Private Const CHESTNUT_PRINT_Y As Double = 1906.0
-    Private Const HEATHER_DARK_CHOCOLATE_PROOF_X As Double = 2091.0
-    Private Const HEATHER_DARK_CHOCOLATE_PROOF_Y As Double = 2174.0
-    Private Const HEATHER_DARK_CHOCOLATE_PRINT_X As Double = 2091.0
-    Private Const HEATHER_DARK_CHOCOLATE_PRINT_Y As Double = 2174.0
-    Private Const IRISH_GREEN_PROOF_X As Double = 2087.0
-    Private Const IRISH_GREEN_PROOF_Y As Double = 2478.0
-    Private Const IRISH_GREEN_PRINT_X As Double = 2294.0
-    Private Const IRISH_GREEN_PRINT_Y As Double = 2474.0
-    Private Const HEATHER_FOREST_PROOF_X As Double = 2091.0
-    Private Const HEATHER_FOREST_PROOF_Y As Double = 2750.0
-    Private Const HEATHER_FOREST_PRINT_X As Double = 2259.0
-    Private Const HEATHER_FOREST_PRINT_Y As Double = 2778.0
-    Private Const ANTIQUE_JADE_DOME_PROOF_X As Double = 2103.0
-    Private Const ANTIQUE_JADE_DOME_PROOF_Y As Double = 3018.0
-    Private Const ANTIQUE_JADE_DOME_PRINT_X As Double = 2331.0
-    Private Const ANTIQUE_JADE_DOME_PRINT_Y As Double = 3015.0
-    Private Const CHARCOAL_PROOF_X As Double = 2719.0
-    Private Const CHARCOAL_PROOF_Y As Double = 215.0
-    Private Const CHARCOAL_PRINT_X As Double = 2919.0
-    Private Const CHARCOAL_PRINT_Y As Double = 231.0
-    Private Const SPORTS_GREY_PROOF_X As Double = 2695.0
-    Private Const SPORTS_GREY_PROOF_Y As Double = 479.0
-    Private Const SPORTS_GREY_PRINT_X As Double = 2951.0
-    Private Const SPORTS_GREY_PRINT_Y As Double = 491.0
-    Private Const KIWI_PROOF_X As Double = 2699.0
-    Private Const KIWI_PROOF_Y As Double = 795.0
-    Private Const KIWI_PRINT_X As Double = 2927.0
-    Private Const KIWI_PRINT_Y As Double = 811.0
-    Private Const ANTIQUE_SAPPHIRE_PROOF_X As Double = 2719.0
-    Private Const ANTIQUE_SAPPHIRE_PROOF_Y As Double = 1071.0
-    Private Const ANTIQUE_SAPPHIRE_PRINT_X As Double = 2931.0
-    Private Const ANTIQUE_SAPPHIRE_PRINT_Y As Double = 1071.0
-    Private Const GRAPHITE_HEATHER_PROOF_X As Double = 2719.0
-    Private Const GRAPHITE_HEATHER_PROOF_Y As Double = 1347.0
-    Private Const GRAPHITE_HEATHER_PRINT_X As Double = 2911.0
-    Private Const GRAPHITE_HEATHER_PRINT_Y As Double = 1327.0
-    Private Const BLACKBERRY_PROOF_X As Double = 2447.0
-    Private Const BLACKBERRY_PROOF_Y As Double = 1899.0
-    Private Const BLACKBERRY_PRINT_X As Double = 2947.0
-    Private Const BLACKBERRY_PRINT_Y As Double = 1883.0
-    Private Const MIDNIGHT_PROOF_X As Double = 2731.0
-    Private Const MIDNIGHT_PROOF_Y As Double = 2151.0
-    Private Const MIDNIGHT_PRINT_X As Double = 2959.0
-    Private Const MIDNIGHT_PRINT_Y As Double = 2167.0
-    Private Const HONEY_PROOF_X As Double = 3346.0
-    Private Const HONEY_PROOF_Y As Double = 207.0
-    Private Const HONEY_PRINT_X As Double = 3538.0
-    Private Const HONEY_PRINT_Y As Double = 223.0
-    Private Const DAFFODIL_PROOF_X As Double = 3343.0
-    Private Const DAFFODIL_PROOF_Y As Double = 479.0
-    Private Const DAFFODIL_PRINT_X As Double = 3343.0
-    Private Const DAFFODIL_PRINT_Y As Double = 479.0
-    Private Const DAISY_PROOF_X As Double = 3358.0
-    Private Const DAISY_PROOF_Y As Double = 799.0
-    Private Const DAISY_PRINT_X As Double = 3562.0
-    Private Const DAISY_PRINT_Y As Double = 803.0
-    Private Const TEXAS_ORANGE_PROOF_X As Double = 3374.0
-    Private Const TEXAS_ORANGE_PROOF_Y As Double = 1091.0
-    Private Const TEXAS_ORANGE_PRINT_X As Double = 3566.0
-    Private Const TEXAS_ORANGE_PRINT_Y As Double = 1075.0
-    Private Const ANTIQUE_ORANGE_PRINT_X As Double = 3366.0
-    Private Const ANTIQUE_ORANGE_PRINT_Y As Double = 1391.0
-    Private Const ANTIQUE_ORANGE_PROOF_X As Double = 3554.0
-    Private Const ANTIQUE_ORANGE_PROOF_Y As Double = 1379.0
-    Private Const ANTIQUE_CHERRY_PRINT_X As Double = 3554.0
-    Private Const ANTIQUE_CHERRY_PRINT_Y As Double = 1647.0
-    Private Const ANTIQUE_CHERRY_PROOF_X As Double = 3558.0
-    Private Const ANTIQUE_CHERRY_PROOF_Y As Double = 1659.0
-    Private Const ORANGE_PRINT_X As Double = 3346.0
-    Private Const ORANGE_PRINT_Y As Double = 1927.0
-    Private Const ORANGE_PROOF_X As Double = 3566.0
-    Private Const ORANGE_PROOF_Y As Double = 1927.0
-    Private Const BLACK_PRINT_X As Double = 3560.0
-    Private Const BLACK_PRINT_Y As Double = 2200.0
-    Private Const BLACK_PROOF_X As Double = 3340.0
-    Private Const BLACK_PROOF_Y As Double = 2200.0
+    Private Const SWATCH_DOCUMENT_PATH As String = "\\ARTSERVER\Textile-Misc\Textile Files\In Progress & Ideas\MUGS\Shirt Colors_2023.psd"
+
+    Private Const HEATHER_NAVY_PROOF_X As Double = 410
+    Private Const HEATHER_NAVY_PROOF_Y As Double = 240
+    Private Const HEATHER_NAVY_PRINT_X As Double = 557.13
+    Private Const HEATHER_NAVY_PRINT_Y As Double = 240
+
+    Private Const DARK_HEATHER_PROOF_X As Double = 1087
+    Private Const DARK_HEATHER_PROOF_Y As Double = 1836
+    Private Const DARK_HEATHER_PRINT_X As Double = 1234.13
+    Private Const DARK_HEATHER_PRINT_Y As Double = 1836
+
+    Private Const HEATHER_INDIGO_PROOF_X As Double = 77
+    Private Const HEATHER_INDIGO_PROOF_Y As Double = 2188
+    Private Const HEATHER_INDIGO_PRINT_X As Double = 224.13
+    Private Const HEATHER_INDIGO_PRINT_Y As Double = 2188
+
+    Private Const STONE_BLUE_PROOF_X As Double = 410
+    Private Const STONE_BLUE_PROOF_Y As Double = 598
+    Private Const STONE_BLUE_PRINT_X As Double = 557.13
+    Private Const STONE_BLUE_PRINT_Y As Double = 598
+
+    Private Const NAVY_BLUE_PROOF_X As Double = 410
+    Private Const NAVY_BLUE_PROOF_Y As Double = 2363
+    Private Const NAVY_BLUE_PRINT_X As Double = 557.13
+    Private Const NAVY_BLUE_PRINT_Y As Double = 2363
+
+    Private Const AQUATIC_BLUE_PROOF_X As Double = 410
+    Private Const AQUATIC_BLUE_PROOF_Y As Double = 948
+    Private Const AQUATIC_BLUE_PRINT_X As Double = 557.13
+    Private Const AQUATIC_BLUE_PRINT_Y As Double = 948
+
+    Private Const INDIGO_BLUE_PROOF_X As Double = 77
+    Private Const INDIGO_BLUE_PROOF_Y As Double = 2368
+    Private Const INDIGO_BLUE_PRINT_X As Double = 224.13
+    Private Const INDIGO_BLUE_PRINT_Y As Double = 2368
+
+    Private Const CAROLINA_BLUE_PROOF_X As Double = 410
+    Private Const CAROLINA_BLUE_PROOF_Y As Double = 1306
+    Private Const CAROLINA_BLUE_PRINT_X As Double = 557.13
+    Private Const CAROLINA_BLUE_PRINT_Y As Double = 1306
+
+    Private Const IRIS_PROOF_X As Double = 410
+    Private Const IRIS_PROOF_Y As Double = 1480
+    Private Const IRIS_PRINT_X As Double = 557.13
+    Private Const IRIS_PRINT_Y As Double = 1480
+
+    Private Const VIOLET_PROOF_X As Double = 2504.97
+    Private Const VIOLET_PROOF_Y As Double = 221.78
+    Private Const VIOLET_PRINT_X As Double = 2667.5
+    Private Const VIOLET_PRINT_Y As Double = 221.78
+
+    Private Const LT_BLUE_PROOF_X As Double = 410
+    Private Const LT_BLUE_PROOF_Y As Double = 419
+    Private Const LT_BLUE_PRINT_X As Double = 557.13
+    Private Const LT_BLUE_PRINT_Y As Double = 419
+
+    Private Const HEATHER_MILITARY_PROOF_X As Double = 77
+    Private Const HEATHER_MILITARY_PROOF_Y As Double = 1476
+    Private Const HEATHER_MILITARY_PRINT_X As Double = 224.13
+    Private Const HEATHER_MILITARY_PRINT_Y As Double = 1476
+
+    Private Const STONEWASHED_GREEN_PROOF_X As Double = 77
+    Private Const STONEWASHED_GREEN_PROOF_Y As Double = 1300
+    Private Const STONEWASHED_GREEN_PRINT_X As Double = 224.13
+    Private Const STONEWASHED_GREEN_PRINT_Y As Double = 1300
+
+    Private Const MILITARY_GREEN_PROOF_X As Double = 77
+    Private Const MILITARY_GREEN_PROOF_Y As Double = 1832
+    Private Const MILITARY_GREEN_PRINT_X As Double = 224.13
+    Private Const MILITARY_GREEN_PRINT_Y As Double = 1832
+
+    Private Const FOREST_GREEN_PROOF_X As Double = 77
+    Private Const FOREST_GREEN_PROOF_Y As Double = 2012
+    Private Const FOREST_GREEN_PRINT_X As Double = 224.13
+    Private Const FOREST_GREEN_PRINT_Y As Double = 2012
+
+    Private Const PISTACHIO_PROOF_X As Double = 77
+    Private Const PISTACHIO_PROOF_Y As Double = 1124
+    Private Const PISTACHIO_PRINT_X As Double = 224.13
+    Private Const PISTACHIO_PRINT_Y As Double = 1124
+
+    Private Const ROYAL_BLUE_PROOF_X As Double = 410
+    Private Const ROYAL_BLUE_PROOF_Y As Double = 1834
+    Private Const ROYAL_BLUE_PRINT_X As Double = 557.13
+    Private Const ROYAL_BLUE_PRINT_Y As Double = 1834
+
+    Private Const PURPLE_PROOF_X As Double = 741
+    Private Const PURPLE_PROOF_Y As Double = 598
+    Private Const PURPLE_PRINT_X As Double = 888.13
+    Private Const PURPLE_PRINT_Y As Double = 598
+
+    Private Const JADE_DOME_PROOF_X As Double = 2507.97
+    Private Const JADE_DOME_PROOF_Y As Double = 408.5
+    Private Const JADE_DOME_PRINT_X As Double = 2674.28
+    Private Const JADE_DOME_PRINT_Y As Double = 408.5
+
+    Private Const COBALT_PROOF_X As Double = 2513.25
+    Private Const COBALT_PROOF_Y As Double = 610.31
+    Private Const COBALT_PRINT_X As Double = 2672.78
+    Private Const COBALT_PRINT_Y As Double = 610.31
+
+    Private Const SAPPHIRE_PROOF_X As Double = 2520
+    Private Const SAPPHIRE_PROOF_Y As Double = 809.09
+    Private Const SAPPHIRE_PRINT_X As Double = 2676.53
+    Private Const SAPPHIRE_PRINT_Y As Double = 809.09
+
+    Private Const BLUE_DUSK_PROOF_X As Double = 410
+    Private Const BLUE_DUSK_PROOF_Y As Double = 2187
+    Private Const BLUE_DUSK_PRINT_X As Double = 557.13
+    Private Const BLUE_DUSK_PRINT_Y As Double = 2187
+
+    Private Const CARDINAL_RED_PROOF_X As Double = 77
+    Private Const CARDINAL_RED_PROOF_Y As Double = 592
+    Private Const CARDINAL_RED_PRINT_X As Double = 224.13
+    Private Const CARDINAL_RED_PRINT_Y As Double = 592
+
+    Private Const RED_PROOF_X As Double = 77
+    Private Const RED_PROOF_Y As Double = 416
+    Private Const RED_PRINT_X As Double = 224.13
+    Private Const RED_PRINT_Y As Double = 416
+
+    Private Const HEATHER_RED_PROOF_X As Double = 77
+    Private Const HEATHER_RED_PROOF_Y As Double = 240
+    Private Const HEATHER_RED_PRINT_X As Double = 224.13
+    Private Const HEATHER_RED_PRINT_Y As Double = 240
+
+    Private Const HEATHER_CARDINAL_PROOF_X As Double = 2513.25
+    Private Const HEATHER_CARDINAL_PROOF_Y As Double = 1021.41
+    Private Const HEATHER_CARDINAL_PRINT_X As Double = 2681.81
+    Private Const HEATHER_CARDINAL_PRINT_Y As Double = 1021.41
+
+    Private Const HELICONIA_PROOF_X As Double = 2516.25
+    Private Const HELICONIA_PROOF_Y As Double = 1220.19
+    Private Const HELICONIA_PRINT_X As Double = 2516.25
+    Private Const HELICONIA_PRINT_Y As Double = 1220.19
+
+    Private Const LT_PINK_PROOF_X As Double = 2507.22
+    Private Const LT_PINK_PROOF_Y As Double = 1408.44
+    Private Const LT_PINK_PRINT_X As Double = 2507.22
+    Private Const LT_PINK_PRINT_Y As Double = 1408.44
+
+    Private Const LAVENDER_PROOF_X As Double = 741
+    Private Const LAVENDER_PROOF_Y As Double = 240
+    Private Const LAVENDER_PRINT_X As Double = 888.13
+    Private Const LAVENDER_PRINT_Y As Double = 240
+
+    Private Const ORCHID_PROOF_X As Double = 741
+    Private Const ORCHID_PROOF_Y As Double = 419
+    Private Const ORCHID_PRINT_X As Double = 888.13
+    Private Const ORCHID_PRINT_Y As Double = 419
+
+    Private Const GARNET_PROOF_X As Double = 2167.81
+    Private Const GARNET_PROOF_Y As Double = 221.03
+    Private Const GARNET_PRINT_X As Double = 2330.38
+    Private Const GARNET_PRINT_Y As Double = 221.03
+
+    Private Const MAROON_PROOF_X As Double = 2167.81
+    Private Const MAROON_PROOF_Y As Double = 416.78
+    Private Const MAROON_PRINT_X As Double = 2331.88
+    Private Const MAROON_PRINT_Y As Double = 416.78
+
+    Private Const METRO_BLUE_PROOF_X As Double = 2167.81
+    Private Const METRO_BLUE_PROOF_Y As Double = 621.59
+    Private Const METRO_BLUE_PRINT_X As Double = 2330.38
+    Private Const METRO_BLUE_PRINT_Y As Double = 621.59
+
+    Private Const SANDY_PROOF_X As Double = 1087
+    Private Const SANDY_PROOF_Y As Double = 595
+    Private Const SANDY_PRINT_X As Double = 1234.13
+    Private Const SANDY_PRINT_Y As Double = 595
+
+    Private Const PRAIRIE_DUST_PROOF_X As Double = 1087
+    Private Const PRAIRIE_DUST_PROOF_Y As Double = 775
+    Private Const PRAIRIE_DUST_PRINT_X As Double = 1234.13
+    Private Const PRAIRIE_DUST_PRINT_Y As Double = 775
+
+    Private Const NATURAL_PROOF_X As Double = 1087
+    Private Const NATURAL_PROOF_Y As Double = 244
+    Private Const NATURAL_PRINT_X As Double = 1234.13
+    Private Const NATURAL_PRINT_Y As Double = 244
+
+    Private Const HEATHER_DARK_CHOCOLATE_PROOF_X As Double = 1087
+    Private Const HEATHER_DARK_CHOCOLATE_PROOF_Y As Double = 950
+    Private Const HEATHER_DARK_CHOCOLATE_PRINT_X As Double = 1234.13
+    Private Const HEATHER_DARK_CHOCOLATE_PRINT_Y As Double = 950
+
+    Private Const SAND_PROOF_X As Double = 1087
+    Private Const SAND_PROOF_Y As Double = 420
+    Private Const SAND_PRINT_X As Double = 1234.13
+    Private Const SAND_PRINT_Y As Double = 420
+
+    Private Const BROWN_SAVANA_PROOF_X As Double = 2177.59
+    Private Const BROWN_SAVANA_PROOF_Y As Double = 825.66
+    Private Const BROWN_SAVANA_PRINT_X As Double = 2335.63
+    Private Const BROWN_SAVANA_PRINT_Y As Double = 825.66
+
+    Private Const CHESTNUT_PROOF_X As Double = 1087
+    Private Const CHESTNUT_PROOF_Y As Double = 1126
+    Private Const CHESTNUT_PRINT_X As Double = 1234.13
+    Private Const CHESTNUT_PRINT_Y As Double = 1126
+
+    Private Const DARK_CHOCOLATE_PROOF_X As Double = 1087
+    Private Const DARK_CHOCOLATE_PROOF_Y As Double = 1301
+    Private Const DARK_CHOCOLATE_PRINT_X As Double = 1234.13
+    Private Const DARK_CHOCOLATE_PRINT_Y As Double = 1301
+
+    Private Const IRISH_GREEN_PROOF_X As Double = 77
+    Private Const IRISH_GREEN_PROOF_Y As Double = 948
+    Private Const IRISH_GREEN_PRINT_X As Double = 224.13
+    Private Const IRISH_GREEN_PRINT_Y As Double = 948
+
+    Private Const HEATHER_FOREST_PROOF_X As Double = 77
+    Private Const HEATHER_FOREST_PROOF_Y As Double = 1656
+    Private Const HEATHER_FOREST_PRINT_X As Double = 224.13
+    Private Const HEATHER_FOREST_PRINT_Y As Double = 1656
+
+    Private Const ANTIQUE_JADE_DOME_PROOF_X As Double = 2179.88
+    Private Const ANTIQUE_JADE_DOME_PROOF_Y As Double = 1022.91
+    Private Const ANTIQUE_JADE_DOME_PRINT_X As Double = 2351.44
+    Private Const ANTIQUE_JADE_DOME_PRINT_Y As Double = 1022.91
+
+    Private Const CHARCOAL_PROOF_X As Double = 1087
+    Private Const CHARCOAL_PROOF_Y As Double = 2011
+    Private Const CHARCOAL_PRINT_X As Double = 1234.13
+    Private Const CHARCOAL_PRINT_Y As Double = 2011
+
+    Private Const SPORTS_GREY_PROOF_X As Double = 1087
+    Private Const SPORTS_GREY_PROOF_Y As Double = 1477
+    Private Const SPORTS_GREY_PRINT_X As Double = 1234.13
+    Private Const SPORTS_GREY_PRINT_Y As Double = 1477
+
+    Private Const KIWI_PROOF_X As Double = 0
+    Private Const KIWI_PROOF_Y As Double = 0
+    Private Const KIWI_PRINT_X As Double = 0
+    Private Const KIWI_PRINT_Y As Double = 0
+
+    Private Const ANTIQUE_SAPPHIRE_PROOF_X As Double = 410
+    Private Const ANTIQUE_SAPPHIRE_PROOF_Y As Double = 1127
+    Private Const ANTIQUE_SAPPHIRE_PRINT_X As Double = 557.13
+    Private Const ANTIQUE_SAPPHIRE_PRINT_Y As Double = 1127
+
+    Private Const GRAPHITE_HEATHER_PROOF_X As Double = 1087
+    Private Const GRAPHITE_HEATHER_PROOF_Y As Double = 1656
+    Private Const GRAPHITE_HEATHER_PRINT_X As Double = 1234.13
+    Private Const GRAPHITE_HEATHER_PRINT_Y As Double = 1656
+
+    Private Const BLACKBERRY_PROOF_X As Double = 2186.63
+    Private Const BLACKBERRY_PROOF_Y As Double = 1227.72
+    Private Const BLACKBERRY_PRINT_X As Double = 2352.19
+    Private Const BLACKBERRY_PRINT_Y As Double = 1227.72
+
+    Private Const MIDNIGHT_PROOF_X As Double = 2186.63
+    Private Const MIDNIGHT_PROOF_Y As Double = 1429.53
+    Private Const MIDNIGHT_PRINT_X As Double = 2355.22
+    Private Const MIDNIGHT_PRINT_Y As Double = 1429.53
+
+    Private Const HONEY_PROOF_X As Double = 1852.5
+    Private Const HONEY_PROOF_Y As Double = 215
+    Private Const HONEY_PRINT_X As Double = 2014.31
+    Private Const HONEY_PRINT_Y As Double = 215
+
+    Private Const DAFFODIL_PROOF_X As Double = 1852.5
+    Private Const DAFFODIL_PROOF_Y As Double = 416.78
+    Private Const DAFFODIL_PRINT_X As Double = 1852.5
+    Private Const DAFFODIL_PRINT_Y As Double = 416.78
+
+    Private Const DAISY_PROOF_X As Double = 77
+    Private Const DAISY_PROOF_Y As Double = 768
+    Private Const DAISY_PRINT_X As Double = 224.13
+    Private Const DAISY_PRINT_Y As Double = 768
+
+    Private Const TEXAS_ORANGE_PROOF_X As Double = 1851
+    Private Const TEXAS_ORANGE_PROOF_Y As Double = 623.84
+    Private Const TEXAS_ORANGE_PRINT_X As Double = 2009.78
+    Private Const TEXAS_ORANGE_PRINT_Y As Double = 623.84
+
+    Private Const ANTIQUE_ORANGE_PRINT_X As Double = 1851
+    Private Const ANTIQUE_ORANGE_PRINT_Y As Double = 855.75
+    Private Const ANTIQUE_ORANGE_PROOF_X As Double = 2010.53
+    Private Const ANTIQUE_ORANGE_PROOF_Y As Double = 855.75
+
+    Private Const ANTIQUE_CHERRY_PRINT_X As Double = 1851
+    Private Const ANTIQUE_CHERRY_PRINT_Y As Double = 1063.59
+    Private Const ANTIQUE_CHERRY_PROOF_X As Double = 2010.53
+    Private Const ANTIQUE_CHERRY_PROOF_Y As Double = 1066.59
+
+    Private Const ORANGE_PRINT_X As Double = 741
+    Private Const ORANGE_PRINT_Y As Double = 772
+    Private Const ORANGE_PROOF_X As Double = 888.13
+    Private Const ORANGE_PROOF_Y As Double = 772
+
+    Private Const BLACK_PRINT_X As Double = 1087
+    Private Const BLACK_PRINT_Y As Double = 2187
+    Private Const BLACK_PROOF_X As Double = 1234.13
+    Private Const BLACK_PROOF_Y As Double = 2187
 
     'PUBLIC METHODS****************************************************************************************************
 
@@ -245,7 +305,7 @@ Public Class mugColorsSampler_class
 
         Dim previousUnitPreference As PsUnits = app.Preferences.RulerUnits
         app.Preferences.RulerUnits = PsUnits.psPixels
-        Dim swatchDoc As Document = app.Open("\\ARTSERVER\Textile-Misc\Textile Files\In Progress & Ideas\MUGS\Shirt Colors_NEW.psd")
+        Dim swatchDoc As Document = app.Open(SWATCH_DOCUMENT_PATH)
 
         app.ActiveDocument = swatchDoc
 
